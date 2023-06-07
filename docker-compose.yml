@@ -31,3 +31,14 @@ services:
       - TYPEORM_DATABASE=${TYPEORM_DATABASE}
       - TYPEORM_PORT=${TYPEORM_PORT}
       - TYPEORM_HOST=db
+  front:
+    container_name: front-react
+    build:
+      context: ./front
+    depends_on:
+      - db
+      - back
+    restart: unless-stopped
+    ports: 
+      - '80:80'
+      
