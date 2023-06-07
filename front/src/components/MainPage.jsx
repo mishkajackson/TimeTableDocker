@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const MainPage = () => {
     const authLocalStorage = JSON.parse(localStorage.getItem("authenticated"))
-    const [authenticated, setAuthenticated] = useState(authLocalStorage);
+    const [authenticated, setAuthenticated] = useState(true);
 
     if (!authenticated) {
         return <Navigate replace to="/Login" />;

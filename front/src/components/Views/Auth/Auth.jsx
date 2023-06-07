@@ -9,7 +9,7 @@ function Auth() {
     const [error, setError] = useState(false)
     function onFormSubmit(e) {
         e.preventDefault();
-        axios.get(`http://localhost:4200/api/users/auth/${password}`)
+        axios.get(`/api/users/auth/${password}`)
         .then(res => {
             console.log(res.data)
             if (res.data) {

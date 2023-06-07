@@ -13,7 +13,7 @@ function Table({ datesList, users, cab, today }) {
     // console.log(listOfTimeline);
     useEffect(() => {
       axios
-        .get(`http://localhost:4200/api/timeline/month/${cab}/${today}`)
+        .get(`/api/timeline/month/${cab}/${today}`)
         .then((res) => {
           setlistOfTimeline(res.data);
         });
@@ -21,7 +21,7 @@ function Table({ datesList, users, cab, today }) {
     function addUser(e, date, day) {
         const userid = users.filter(user => user.name === e.target.value )
         console.log(userid[0].id, date, day, cab);
-        axios.post("http://localhost:4200/api/timeline/", {
+        axios.post("/api/timeline/", {
           date: date,
           userId: userid[0].id,
           timeOfDay: day,
@@ -32,10 +32,10 @@ function Table({ datesList, users, cab, today }) {
     function updateUser(e, id, date, day) {
         console.log(id, Number(e.target.value), date, day)
         if (Number(e.target.value) === 22) {
-            axios.delete(`http://localhost:4200/api/timeline/${id}`);
+            axios.delete(`/api/timeline/${id}`);
             console.log('delete')
         } else {
-            axios.put(`http://localhost:4200/api/timeline/${id}`, {
+            axios.put(`/api/timeline/${id}`, {
               date: date,
               userId: Number(e.target.value),
               timeOfDay: day,

@@ -22,7 +22,7 @@ function Me() {
      useEffect(() => {
        let dates = [];
        axios
-         .get("http://localhost:4200/api/weekdates")
+         .get("/api/weekdates")
          .then((res) => {
            for (let i = 0; i < 6; i++) {
              dates.push(new Date(res.data[i]));
@@ -39,7 +39,7 @@ function Me() {
        axios
          .get(
 
-           `http://localhost:4200/api/timeline/monthbyid/${user.id}/${today}`
+           `/api/timeline/monthbyid/${user.id}/${today}`
          )
          .then((res) => {
            setlistOfTimeline(res.data);

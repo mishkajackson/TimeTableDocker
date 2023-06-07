@@ -14,7 +14,7 @@ function Today() {
     useEffect(() => {
         let dates = []
         axios
-          .get("http://localhost:4200/api/weekdates")
+          .get("/api/weekdates")
           .then((res) => {
             for (let i = 0; i < 6; i++) {
               dates.push(new Date(res.data[i]));
@@ -28,7 +28,7 @@ function Today() {
     }
     const [listOfTimeline, setlistOfTimeline] = useState([])
     useEffect(() => {
-        axios.get("http://localhost:4200/api/timeline/week")
+        axios.get("/api/timeline/week")
             .then(res => {
                 setlistOfTimeline(res.data);
             })

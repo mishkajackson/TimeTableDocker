@@ -17,7 +17,7 @@ function Schedule() {
 
     
     useEffect(() => {
-        axios.get("http://localhost:4200/api/users/").then((res) => {
+        axios.get("/api/users/").then((res) => {
           setUsers(res.data);
         });
     }, [])
@@ -25,7 +25,7 @@ function Schedule() {
     useEffect(() => {
       axios
         .get(
-          `http://localhost:4200/api/dates/${day}`
+          `/api/dates/${day}`
           
         )
         .then((res) => {
