@@ -41,7 +41,6 @@ function Table({ datesList, users, cab, today }) {
               timeOfDay: day,
               cabId: cab,
             });
-            console.log({ id: id, userid: Number(e.target.value), date: date, day: day, cab: cab })
         }
 
     }
