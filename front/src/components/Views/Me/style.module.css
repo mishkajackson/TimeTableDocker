@@ -1,0 +1,32 @@
+.title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #FFFFFF;
+  height: 70px;
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  border-bottom: 1px solid #ebebeb;
+  text-transform: capitalize;
+  font-size: 12px;
+  color: #4c4c4c;
+}
+
+.title svg {
+  padding: 25px 40px;
+  border-radius: 8px;
+}
+
+
+.content {
+  margin-top: 75px;
+}
+
+.cards {
+  margin: 0px 10px 100px 10px;
+}

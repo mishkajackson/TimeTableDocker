@@ -1,0 +1,60 @@
+
+.titleMonth {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 12px;
+  color: #4c4c4c;
+}
+
+.titleMonth svg {
+  padding: 20px;
+}
+
+.datePicker {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+
+
+}
+
+.date {
+  color: #4c4c4c;
+  border: 1px solid #eeeeee;
+  width: 50px;
+  text-align: center;
+  border-radius: 6px;
+  background: #FFFFFFFF;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.date:hover {
+  color: rgba(0, 81, 255, 0.663);
+  border: 1px solid rgba(0, 81, 255, 0.663);
+}
+
+.date .active {
+  color: rgba(0, 81, 255, 0.663);
+  border: 1px solid rgba(0, 81, 255, 0.663);
+}
+
+.date p {
+  margin: 5px;
+
+}
+
+.date_week {
+  font-weight: 600;
+
+}
+
+.date_number {
+  font-weight: 400;
+}

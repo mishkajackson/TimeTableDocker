@@ -17,6 +17,11 @@ export class UsersController {
         return this.userService.getOne(id)
     }
 
+    @Get('auth/:password')
+    async auth(@Param('password') password:string) {
+        return this.userService.auth(password)
+    }
+
     @Post() 
     async create(@Body() dto: CreateUserDto) {
         return this.userService.create(dto)

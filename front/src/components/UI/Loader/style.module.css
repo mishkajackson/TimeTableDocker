@@ -1,0 +1,21 @@
+.container {
+    position: absolute;
+    top: calc(50% - 88px);
+    left: calc(50% - 26px);
+    font-size: 36px;
+    color: rgb(203, 203, 203);
+}
+
+.spinner {
+    animation: spin infinite 1s linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -11,7 +11,11 @@ export class UsersService {
     }
 
     async getAll(): Promise<UserEntity[]> {
-        return this.userRepository.find()
+        return this.userRepository.find({
+            order: {
+                name: 'ASC'
+            }
+        })
     }
 
     async getOne(id: string): Promise<UserEntity>  {
@@ -19,6 +23,14 @@ export class UsersService {
             where: {
                 id: Number(id),
                 
+            }
+        })
+    }
+
+    async auth(password: string): Promise<UserEntity>  {
+        return this.userRepository.findOne({
+            where: {
+                password: password
             }
         })
     }

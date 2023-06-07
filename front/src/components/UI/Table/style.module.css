@@ -1,0 +1,100 @@
+.title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #FFFFFF;
+  color: rgba(0, 17, 53, 0.863);
+  height: 70px;
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  border-bottom: 1px solid rgb(202, 202, 202);
+  text-transform: capitalize;
+  font-size: 12px;
+}
+
+.title svg {
+  padding: 20px 40px;
+}
+
+.content {
+  margin: 0px 10px 100px 10px;
+}
+
+.cards {}
+
+.card {
+  background: rgba(255, 255, 255, 0.611);
+  padding: 0px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  height: 100%;
+  border: 1px solid #e7e7e7;
+}
+
+.card p {
+  color: rgb(97, 97, 97);
+  font-size: 16px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+}
+
+.card h1 {
+  color: rgba(44, 44, 44, 0.863);
+  font-size: 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e4e4e4;
+  width: 100%;
+}
+
+.icon {
+  color: rgb(97, 97, 97);
+  font-size: 16px;
+  width: 16px;
+}
+
+.blocks {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.blocks p {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding-left: 30px;
+  padding: 0px 30px 10px 30px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+
+
+}
+
+.block p {
+  font-size: 16px;
+}
+
+
+
+
+.date {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  text-transform: uppercase;
+}

@@ -10,7 +10,7 @@ export class UserEntity {
     @Column()
     name: string
 
-    @Column()
+    @Column({select: false, unique: true})
     password: string 
 
     @Column('boolean', { default: true })

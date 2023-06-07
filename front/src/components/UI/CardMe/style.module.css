@@ -1,0 +1,64 @@
+.card {
+  padding: 0px;
+  margin-bottom: 10px;
+  border-radius: 0px 8px 8px 0px;
+  height: 100%;
+}
+
+.card p {
+  color: rgb(97, 97, 97);
+  padding-left: 10px;
+  padding-right: 15px;
+  text-transform: capitalize;
+}
+
+.card h1 {
+  font-size: 14px;
+  padding-left: 5px;
+  color: #9b9b9b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+.icon {
+  color: rgb(119, 119, 119);
+  font-size: 20px;
+  width: 40px;
+}
+
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding-left: 5px;
+  padding-bottom: 15px;
+
+}
+
+.block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.row {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.02);
+}
+
+.total {
+  text-align: right;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+  color: #8b8b8b;
+}

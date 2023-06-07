@@ -13,7 +13,7 @@ export class AppController {
     const today = new Date(date)
      const year = today.getFullYear()
         const month = today.getMonth()
-        const countDays = 33 - new Date(year, month, 33).getDate()
+        const countDays = 34 - new Date(year, month, 33).getDate()
         let datesList = []
         for (let i = 2; i <= countDays; i++) {
           datesList.push(new Date(year, month, i)) 
@@ -24,7 +24,7 @@ export class AppController {
   @Get('weekdates')
   getCurrentWeekDates(): Date[] {
     const today = new Date()
-    const monday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 2)
+    const monday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 1)
     const dates = []
 
     for (let i = 0; i < 7; i++) {

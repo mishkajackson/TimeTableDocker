@@ -1,0 +1,59 @@
+.title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #FFFFFF;
+  color: rgba(0, 17, 53, 0.863);
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ebebeb;
+  font-size: 12px;
+  height: 130px;
+
+}
+
+
+
+
+
+.avatar {
+  font-size: 20px;
+  background: #dddddd;
+  padding: 20px;
+  border-radius: 50%;
+  color: #FFFFFF;
+}
+
+.greeting {
+  font-size: 18px;
+  color: #4e4e4e;
+  font-weight: 600;
+}
+
+.role {
+  position: absolute;
+  bottom: -5px;
+  color: #a6a3a3;
+}
+
+.btn {
+  position: fixed;
+  top: 5px;
+  right: 10px;
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: rgba(0, 81, 255, 0.358);
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  color: rgba(0, 81, 255, 0.547);
+}

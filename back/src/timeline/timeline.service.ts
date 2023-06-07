@@ -28,6 +28,14 @@ export class TimelineService {
         const timelines = await this.timelineRepository.find({
             where: {
                 date: Between(firstDayOfWeek, lastDayOfWeek)
+            },
+            relations: {
+                user: true
+            },
+            select: {
+                user: {
+                    name: true
+                }
             }
         })
         return timelines
@@ -54,6 +62,14 @@ export class TimelineService {
             where: {
                 userId: Number(id),
                 date: Between(firstDayOfMonth, lastDayOfMonth)
+            },
+             relations: {
+                user: true
+            },
+            select: {
+                user: {
+                    name: true
+                }
             }
         })
         return timelines

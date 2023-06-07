@@ -1,0 +1,25 @@
+.main {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    width: 200px;
+    color: #FFFFFF;
+    text-align: center;
+    animation: moveLeft 0.5s;
+}
+
+.title {
+    padding: 10px;
+    border-radius: 6px;
+    background: #FF5E5E;
+}
+
+@keyframes moveLeft {
+    from {
+        right: -220px;
+    }
+
+    to {
+        right: 20px;
+    }
+}
