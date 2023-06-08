@@ -40,6 +40,15 @@ services:
       - back
     restart: unless-stopped
     ports: 
+      - '3000:3000'
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+    restart: always
+    ports:
       - '80:80'
       - '443:443'
+    
+
       

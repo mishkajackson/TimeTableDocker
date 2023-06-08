@@ -41,4 +41,4 @@ lerna-debug.log*
 
 /front/node_modules
 /front/build
-/front/ssl
+/nginx/ssl
