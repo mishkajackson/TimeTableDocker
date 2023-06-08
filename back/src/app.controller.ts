@@ -15,7 +15,7 @@ export class AppController {
         const month = today.getMonth()
         const countDays = new Date(year, month, 0).getDate()
         let datesList = []
-        for (let i = 2; i <= countDays; i++) {
+        for (let i = 1; i <= countDays; i++) {
           datesList.push(new Date(year, month, i)) 
         }
         return datesList
