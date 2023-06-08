@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from 'react';
 import moment from 'moment';
-
+// const API_URL = "http://localhost:4200"
 
 function Schedule() {
     const [tab, setTab] = useState('tab1')
@@ -17,17 +17,14 @@ function Schedule() {
 
     
     useEffect(() => {
-        axios.get("/api/users/").then((res) => {
+        axios.get(`api/users/`).then((res) => {
           setUsers(res.data);
         });
     }, [])
 
     useEffect(() => {
       axios
-        .get(
-          `/api/dates/${day}`
-          
-        )
+        .get(`api/dates/${day}`)
         .then((res) => {
           setDatesList(res.data);
         })

@@ -9,27 +9,26 @@ function Auth() {
     const [error, setError] = useState(false)
     function onFormSubmit(e) {
         e.preventDefault();
-        axios.get(`/api/users/auth/${password}`)
-        .then(res => {
-            console.log(res.data)
+        axios
+          .get(`api/users/auth/${password}`)
+          .then((res) => {
+            console.log(res.data);
             if (res.data) {
-                localStorage.setItem("user", JSON.stringify(res.data));
-                localStorage.setItem("authenticated", "true");
-                navigate("/");
-            }else {
-                setError(true);
-                console.log(error, "Ошибка авторизации");
+              localStorage.setItem("user", JSON.stringify(res.data));
+              localStorage.setItem("authenticated", "true");
+              navigate("/");
+            } else {
+              setError(true);
+              console.log(error, "Ошибка авторизации");
             }
-            
-        })
-        .catch(error => {
-            setError(true)
+          })
+          .catch((error) => {
+            setError(true);
             setTimeout(() => {
-                setError(false)
+              setError(false);
             }, 2000);
-            console.log(error, 'Ошибка авторизации')
-            
-        })
+            console.log(error, "Ошибка авторизации");
+          });
     }
     return (
             <div className={styles.main}>
