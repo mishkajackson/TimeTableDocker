@@ -4,6 +4,7 @@ import { UserEntity } from "src/users/users.entity";
 import { BeforeInsert, BeforeUpdate, Column, Entity, Index, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn, Repository, Unique, getRepository } from "typeorm";
 
 @Entity({ name: 'Timeline'})
+@Unique(['date', 'cabId', 'timeOfDay'])
 @Index('unique_timetable_index', ['date', 'timeOfDay', 'cabId', 'userId'], {unique: true})
 
 export class TimelineEntity {

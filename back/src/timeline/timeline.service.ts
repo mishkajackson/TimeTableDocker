@@ -23,11 +23,11 @@ export class TimelineService {
     }
 
     async getCurrentWeek() {
-        const firstDayOfWeek = new Date(new Date().setDate(new Date().getDate() - new Date().getDay() +1))
-        const lastDayOfWeek = new Date(new Date().setDate(new Date().getDate() + (6 - new Date().getDay() +1)))
+        const firstDayOfWeek = new Date(new Date().setDate(new Date().getDate() - new Date().getDay() +1)).setUTCHours(0,0,0,0)
+        const lastDayOfWeek = new Date(new Date().setDate(new Date().getDate() + (6 - new Date().getDay() +1))).setUTCHours(0,0,0,0)
         const timelines = await this.timelineRepository.find({
             where: {
-                date: Between(firstDayOfWeek, lastDayOfWeek)
+                date: Between(new Date(firstDayOfWeek), new Date(lastDayOfWeek))
             },
             relations: {
                 user: true
@@ -49,9 +49,59 @@ export class TimelineService {
             where: {
                 cabId: Number(cab),
                 date: Between(firstDayOfMonth, lastDayOfMonth)
+            },
+            relations: {
+                user: true
+            },
+            select: {
+                user: {
+                    name: true
+                }
             }
         })
         return timelines
+    }
+
+    async getOfCabInMonth (cab: string, date: string) {
+        const today = new Date(date)
+        const year = today.getFullYear()
+        const month = today.getMonth()
+        const countDays = new Date(year, month, 0).getDate()
+        let datesList = []
+            for (let i = 1; i < countDays; i++) {
+            datesList.push({
+                id: null,
+                date: new Date(Date.UTC(year, month, i, 0, 0, 0)),
+                timeOfDay: 'morning',
+                cabId: cab,
+                userId: null,
+                user: {
+                    name: '...'
+                }
+            })
+            datesList.push({
+                id: null,
+                date: new Date(Date.UTC(year, month, i, 0, 0, 0)),
+                timeOfDay: 'evening',
+                cabId: cab,
+                userId: null,
+                user: {
+                    name: '...'
+                }
+            })
+            }
+        let timelines = await this.getByMonthAndCab(cab, date)
+        const result = [...timelines, ...datesList]
+        console.log(result)
+        const res = result.reduce((o, i) => {
+        if (!o.find(v => String(v.date) === String(i.date) && v.timeOfDay === i.timeOfDay)) {
+            o.push(i);
+        }
+        return o;
+        
+}, []);
+        res.sort((a,b) => a.date - b.date)
+        return res
     }
 
     async getByMonthAndById(id: string, date: string) {

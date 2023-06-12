@@ -11,12 +11,12 @@ export class AppController {
   @Get('dates/:date')
   getArrayOfDates(@Param('date') date:string): Date[] {
     const today = new Date(date)
-     const year = today.getFullYear()
-        const month = today.getMonth()
-        const countDays = new Date(year, month, 0).getDate()
-        let datesList = []
-        for (let i = 1; i <= countDays; i++) {
-          datesList.push(new Date(year, month, i)) 
+    const year = today.getFullYear()
+    const month = today.getMonth()
+    const countDays = new Date(year, month, 0).getDate()
+    let datesList = []
+        for (let i = 1; i < countDays; i++) {
+          datesList.push(new Date(Date.UTC(year, month, i, 0, 0, 0)))
         }
         return datesList
   }
@@ -24,10 +24,10 @@ export class AppController {
   @Get('weekdates')
   getCurrentWeekDates(): Date[] {
     const today = new Date()
-    const monday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 1)
+    const monday = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 1,0,0,0))
     const dates = []
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 6; i++) {
         const date = new Date(monday)
         date.setDate(monday.getDate() + i)
         dates.push(new Date(date))

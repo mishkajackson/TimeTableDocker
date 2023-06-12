@@ -5,30 +5,30 @@ import Card from '../../UI/CardToday/Card';
 import Loader from '../../UI/Loader/Loader';
 import DatePicker from '../../UI/DatePicker/DatePicker';
 import styles from './style.module.css';
-
-const today = new Date().toLocaleDateString()
+import moment from 'moment';
 
 function Today() {
-    const [selectedDay, setSelectedDay] = useState(today);
+    const [selectedDay, setSelectedDay] = useState(moment().format('DD.MM.YYYY'));
     const [currentWeekDates, setCurrentWeekDates] = useState([]);
     useEffect(() => {
-        let dates = []
         axios
-          .get("/api/weekdates")
+          .get(`weekdates`)
           .then((res) => {
-            for (let i = 0; i < 6; i++) {
-              dates.push(new Date(res.data[i]));
+            let dates = []
+            for (let i = 0; i < res.data.length; i++) {
+              dates.push(moment(res.data[i]).format("DD.MM.YYYY"));
             }
+            setCurrentWeekDates(dates);
           })
           .catch((error) => console.log(error));
-        setCurrentWeekDates(dates);
+        ;
     }, []);
     const handleChange = (value) => {
         setSelectedDay(value)
     }
     const [listOfTimeline, setlistOfTimeline] = useState([])
     useEffect(() => {
-        axios.get("/api/timeline/week")
+        axios.get(`timeline/week`)
             .then(res => {
                 setlistOfTimeline(res.data);
             })
@@ -42,7 +42,7 @@ function Today() {
                 </div>
             </div>
                     {
-                    currentWeekDates.length
+                    listOfTimeline.length
                     ? <div className={styles.content}>
                         <div className={styles.cards}>
                             <Card title={'ЭЭГ'} items={listOfTimeline} selectedDay={selectedDay} cab={3}></Card>

@@ -26,6 +26,11 @@ export class TimelineController {
         return this.timelineService.getByMonthAndCab(cab, date)
     }
 
+    @Get('cabmonth/:cab/:date')
+    async getOfCabInMonth(@Param('cab') cab:string, @Param('date') date:string) {
+        return this.timelineService.getOfCabInMonth(cab, date)
+    }
+
 
     @Get(':id')
     async getOne(@Param('id') id:string) {

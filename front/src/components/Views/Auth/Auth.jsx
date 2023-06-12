@@ -10,7 +10,7 @@ function Auth() {
     function onFormSubmit(e) {
         e.preventDefault();
         axios
-          .get(`api/users/auth/${password}`)
+          .get(`users/auth/${password}`)
           .then((res) => {
             console.log(res.data);
             if (res.data) {
