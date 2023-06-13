@@ -9,19 +9,25 @@ import { useState, useEffect } from "react";
 
 function Table({ datesList, users, cab }) {
   const [listOfTimeline, setlistOfTimeline] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
+
+  
+
   useEffect(() => {
     axios.get("timeline/").then((res) => {
-      setlistOfTimeline(res.data);
+      const data = res.data;
+      setlistOfTimeline(data);
+      setIsLoading(false);
     });
-  }, [listOfTimeline]);
+  }, []);
   function addUser(e, date, timeOfDay) {
-    console.log(timeOfDay)
     axios.post("timeline/", {
       date: moment.utc(date, "DD.MM.YYYY").format(),
       timeOfDay: timeOfDay,
       userId: Number(e.target.value),
       cabId: cab,
     });
+
     console.log("addUser");
   }
   function updateUser(id, e, date, timeOfDay) {
@@ -35,11 +41,12 @@ function Table({ datesList, users, cab }) {
         userId: Number(e.target.value),
         cabId: cab,
       });
+      console.log("update");
     }
   }
   return (
     <div>
-      {listOfTimeline.length ? (
+      {!isLoading ? (
         <div className={styles.content}>
           {datesList.map((date, index) => (
             <div key={index} className={styles.cards}>

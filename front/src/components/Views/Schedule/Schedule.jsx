@@ -24,23 +24,7 @@ function Schedule() {
   const [localStorageUsers, setlocalStorageUsers] = useState();
   const [updateTime, setupdateTime] = useState();
 
-  useEffect(() => {
-    axios
-      .get("timeline/")
-      .then((res) => {
-        setlistOfTimeline(res.data);
-        setlocalStorageListSchedule(
-          localStorage.setItem(
-            "localStorageListSchedule",
-            JSON.stringify(res.data)
-          )
-        );
-      })
-      .then(() => {
-        setupdateTime(new Date());
-      })
-      .catch((error) => console.log(error));
-  }, []);
+ 
 
   useEffect(() => {
     axios.get("users/").then((res) => {

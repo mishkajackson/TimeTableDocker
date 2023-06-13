@@ -17,7 +17,7 @@ window.env = {
   "USER": "misha",
   "COMMAND_MODE": "unix2003",
   "npm_config_globalconfig": "/usr/local/etc/npmrc",
-  "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.6JzqugtgSe/Listeners",
+  "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.oFzsdl6t6v/Listeners",
   "__CF_USER_TEXT_ENCODING": "0x1F5:0x7:0x31",
   "npm_execpath": "/usr/local/lib/node_modules/npm/bin/npm-cli.js",
   "PATH": "/Users/misha/JS_projects/TimeTableDocker/TimeTableDocker/front/node_modules/.bin:/Users/misha/JS_projects/TimeTableDocker/TimeTableDocker/node_modules/.bin:/Users/misha/JS_projects/TimeTableDocker/node_modules/.bin:/Users/misha/JS_projects/node_modules/.bin:/Users/misha/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/Library/Frameworks/Python.framework/Versions/3.9/bin",
