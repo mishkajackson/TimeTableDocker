@@ -1,3 +1,8 @@
+@keyframes move {
+  from {top: -8px;}
+  to {top: 0px;}
+}
+
 
 .icon {
   color: rgb(119, 119, 119);
@@ -6,7 +11,9 @@
 }
 
 .main {
+  position: relative;
   padding: 0px 10px;
+  animation: move 0.7s;
 }
 
 .calendar {
@@ -14,6 +21,7 @@
   padding: 20px;
   background: #FFFF;
   border-radius: 10px;
+  
 }
 
 .grid {

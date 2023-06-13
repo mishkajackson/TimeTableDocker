@@ -1,3 +1,8 @@
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 .title {
   position: fixed;
   top: 0;
@@ -79,12 +84,14 @@
   text-overflow: '';
   color: #5c5c5c;
   font-size: 16px;
+  animation: fade 0.2s;
 }
 
 .block svg {
   color: #5c5c5c;
   font-size: 18px;
   width: 40px;
+  animation: fade 0.2s;
 }
 
 .date {

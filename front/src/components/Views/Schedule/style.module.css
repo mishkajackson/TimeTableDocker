@@ -1,3 +1,8 @@
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 .title {
   position: fixed;
   top: 0;
@@ -15,11 +20,13 @@
   border-bottom: 1px solid #ebebeb;
   text-transform: capitalize;
   font-size: 12px;
+  animation: fade 0.2s;
 }
 
 .title svg {
   padding: 25px 40px;
   border-radius: 8px;
+  animation: fade 0.2s;
 }
 
 .content {
@@ -34,6 +41,7 @@
   align-items: center;
   background: #f6f6f6;
   border-radius: 8px;
+  animation: fade 0.2s;
 }
 
 .nav p {

@@ -1,3 +1,13 @@
+@keyframes move {
+  from {top: -10px;}
+  to {top: 0;}
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 .title {
   position: fixed;
   top: 0;
@@ -28,12 +38,14 @@
 .cards {}
 
 .card {
+  position: relative;
   background: rgba(255, 255, 255, 0.611);
   padding: 0px;
   margin-bottom: 5px;
   border-radius: 6px;
   height: 100%;
   border: 1px solid #e7e7e7;
+  animation: move 0.5s;
 }
 
 .card p {
@@ -42,6 +54,7 @@
   padding-left: 10px;
   padding-right: 10px;
   width: 100%;
+  
 }
 
 .card h1 {
@@ -72,6 +85,8 @@
   text-transform: uppercase;
   padding-left: 30px;
   padding: 0px 30px 10px 30px;
+  animation: fade 0.2s;
+  
 }
 
 .block {
@@ -82,11 +97,11 @@
   align-items: center;
 
 
-
 }
 
 .block p {
   font-size: 16px;
+  animation: fade 0.2s;
 }
 
 
@@ -97,4 +112,5 @@
   flex-direction: row-reverse;
   align-items: center;
   text-transform: uppercase;
+  animation: fade 0.2s;
 }
