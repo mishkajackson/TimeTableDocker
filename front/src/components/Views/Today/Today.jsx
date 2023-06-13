@@ -35,25 +35,44 @@ function Today() {
             .catch(error => console.log(error))
     }, [])
     return (
-        <div>
-            <div className={styles.title} >
-                <div>
-                    <DatePicker currentWeekDates={currentWeekDates} selectedDay={selectedDay} setSelectedDay={handleChange}></DatePicker>
-                </div>
-            </div>
-                    {
-                    listOfTimeline.length
-                    ? <div className={styles.content}>
-                        <div className={styles.cards}>
-                            <Card title={'ЭЭГ'} items={listOfTimeline} selectedDay={selectedDay} cab={3}></Card>
-                            <Card title={'Платные'} items={listOfTimeline} selectedDay={selectedDay} cab={4}></Card>
-                            <Card title={'Дежурство'} items={listOfTimeline} selectedDay={selectedDay} cab={5}></Card>
-                        </div>
-                    </div>
-                            : <Loader></Loader>
-                    }
+      <div>
+        <div className={styles.title}>
+          <div>
+            <DatePicker
+              currentWeekDates={currentWeekDates}
+              selectedDay={selectedDay}
+              setSelectedDay={handleChange}
+            ></DatePicker>
+          </div>
         </div>
-    )
+        {listOfTimeline.length ? (
+          <div className={styles.content}>
+            <div className={styles.cards}>
+              <Card
+                title={"Дежурство"}
+                items={listOfTimeline}
+                selectedDay={selectedDay}
+                cab={5}
+              ></Card>
+              <Card
+                title={"ЭЭГ"}
+                items={listOfTimeline}
+                selectedDay={selectedDay}
+                cab={3}
+              ></Card>
+              <Card
+                title={"Платные"}
+                items={listOfTimeline}
+                selectedDay={selectedDay}
+                cab={4}
+              ></Card>
+            </div>
+          </div>
+        ) : (
+          <Loader></Loader>
+        )}
+      </div>
+    );
 }
 
 
