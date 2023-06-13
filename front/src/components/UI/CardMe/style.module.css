@@ -6,11 +6,11 @@
 }
 
 .main {
-  padding: 0px 20px;
+  padding: 0px 10px;
 }
 
 .calendar {
-  margin-top: 120px;
+  margin-top: 82px;
   padding: 20px;
   background: #FFFF;
   border-radius: 10px;
@@ -24,23 +24,15 @@
 
 .date {
   text-align: center;
-  padding: 8px 0px;
-  border: 1px solid #FFFF;
-  border-radius: 6px;
+  padding: 6px;
+  font-size: 14px;
   transition: all 0.2s;
-
-  display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: flex-start;
+    
 }
 
+
 .date:hover {
-  border: 1px solid #3674f9;
-  background: #3674f9;
-  color: #ffffff !important;
-  border-radius: 6px;
+  color: #3674f9;
 }
 
 .weekday {
@@ -49,14 +41,19 @@
   font-weight: 800;
   text-transform: uppercase;
   color: #5f5f5f;
+  font-size: 13px;
+}
 
-
+.dots {
+  display: flex;
+  flex-direction: row;
 }
 
 .dot {
-  height: 5px;
-  width: 5px;
+  height: 4px;
+  width: 4px;
   background-color: #bbb;
-  border-radius: 50%;
+  border-radius: 49%;
+  margin: 0 auto;
 }
 

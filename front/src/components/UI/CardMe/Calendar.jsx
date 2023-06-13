@@ -4,9 +4,13 @@ import "moment/locale/ru";
 import styles from "./style.module.css";
 import { useEffect, useState } from 'react';
 
+import Dot from './Dot'
+
 function Calendar({ datesList, today }) {
   const weekdays = moment.weekdaysMin(true);
   const [selectDay, setSelectDay] = useState(today);
+
+  const shifts = ['02.06.2023', '13.06.2023', '27.06.2023']
 
   return (
     <div className={styles.main}>
@@ -22,20 +26,38 @@ function Calendar({ datesList, today }) {
               style={Object.assign(
                 date.month() === today.month()
                   ? { color: "#5e5e5e" }
-                  : { color: "#c1c1c1" },
-                date.format("DD.MM.YYYY") === selectDay.format("DD.MM.YYYY")
-                  ? { border: "1px solid #3674f9", borderRadius: "6px" }
-                  : {}
+                  : { color: "#c1c1c1" }
               )}
               onClick={() => setSelectDay(date)}
-              className={styles.date}
+              className={styles.date2}
               key={index}
             >
-              {date.format("D")}
-              {/* <div>
-                <div className={styles.dot}></div>
-                <div className={styles.dot}></div>
-              </div> */}
+              <div
+                className={styles.date}
+                style={
+                  date.format("DD.MM.YYYY") === selectDay.format("DD.MM.YYYY")
+                    ? {
+                        color: "#3674f9",
+                        borderRadius: "100%",
+                        fontWeight: "800",
+                      }
+                    : {}
+                }
+              >
+                {date.format("D")}
+              </div>
+
+              {shifts.map((shift) =>
+                date.format("DD.MM.YYYY") === shift ? (
+                  <div className={styles.dots}>
+                    <Dot color={"#ff7a7a"}></Dot>
+                    <Dot color={"#6f7fff"}></Dot>
+                    {/* <Dot color={"#6f7fff"}></Dot> */}
+                  </div>
+                ) : (
+                  ""
+                )
+              )}
             </div>
           ))}
         </div>
