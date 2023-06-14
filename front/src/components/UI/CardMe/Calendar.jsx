@@ -46,18 +46,9 @@ function Calendar({ datesList, today }) {
               >
                 {date.format("D")}
               </div>
-
-              {shifts.map((shift) =>
-                date.format("DD.MM.YYYY") === shift ? (
                   <div className={styles.dots}>
-                    <Dot color={"#ff7a7a"}></Dot>
-                    <Dot color={"#6f7fff"}></Dot>
-                    {/* <Dot color={"#6f7fff"}></Dot> */}
+                    <Dot date={date}></Dot>
                   </div>
-                ) : (
-                  ""
-                )
-              )}
             </div>
           ))}
         </div>

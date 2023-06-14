@@ -13,11 +13,9 @@ function User() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
     function addUser(user) {
         console.log(user)
-        axios.post("http://localhost:4200/api/users/", { name: user, isAdmin: false })
+        axios.post("users/", { name: user, isAdmin: false })
             .then(res => {
-                setUser(res.data);
                 console.log(res.data)
-                setUser('');
             })
     }
 

@@ -45,7 +45,7 @@
   border-radius: 6px;
   height: 100%;
   border: 1px solid #e7e7e7;
-  animation: move 0.5s;
+  animation: move 0.8s;
 }
 
 .card p {
@@ -85,7 +85,7 @@
   text-transform: uppercase;
   padding-left: 30px;
   padding: 0px 30px 10px 30px;
-  animation: fade 0.2s;
+  animation: fade 0.5s;
   
 }
 
@@ -101,7 +101,7 @@
 
 .block p {
   font-size: 16px;
-  animation: fade 0.2s;
+  animation: fade 0.5s;
 }
 
 
@@ -112,5 +112,5 @@
   flex-direction: row-reverse;
   align-items: center;
   text-transform: uppercase;
-  animation: fade 0.2s;
+  animation: fade 0.5s;
 }

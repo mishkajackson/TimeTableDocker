@@ -20,6 +20,10 @@ function Me() {
       setDaysOfMonth();
     }, [today]);
 
+    function getTimelines() {
+        
+    }
+
     function setDaysOfMonth() {
      const startOfMonth = today.clone().startOf("month");
      const endOfMonth = today.clone().endOf("month");

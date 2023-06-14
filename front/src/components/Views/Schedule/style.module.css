@@ -20,13 +20,13 @@
   border-bottom: 1px solid #ebebeb;
   text-transform: capitalize;
   font-size: 12px;
-  animation: fade 0.2s;
+  animation: fade 0.5s;
 }
 
 .title svg {
   padding: 25px 40px;
   border-radius: 8px;
-  animation: fade 0.2s;
+  animation: fade 0.5s;
 }
 
 .content {
@@ -41,7 +41,7 @@
   align-items: center;
   background: #f6f6f6;
   border-radius: 8px;
-  animation: fade 0.2s;
+  animation: fade 0.5s;
 }
 
 .nav p {

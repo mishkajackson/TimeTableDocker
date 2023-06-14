@@ -28,11 +28,14 @@ function Today() {
     }
     const [listOfTimeline, setlistOfTimeline] = useState([])
     useEffect(() => {
-        axios.get(`timeline/week`)
-            .then(res => {
-                setlistOfTimeline(res.data);
-            })
-            .catch(error => console.log(error))
+      const startOfWeek = moment().startOf("week").format("YYYY-MM-DD")
+      const endOfWeek = moment().endOf("week").format("YYYY-MM-DD")
+        axios
+          .get(`timeline/filter?startDate=${startOfWeek}&endDate=${endOfWeek}`)
+          .then((res) => {
+            setlistOfTimeline(res.data);
+          })
+          .catch((error) => console.log(error));
     }, [])
     return (
       <div>

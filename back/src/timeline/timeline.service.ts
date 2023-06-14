@@ -22,109 +22,6 @@ export class TimelineService {
         })
     }
 
-    async getCurrentWeek() {
-        const firstDayOfWeek = new Date(new Date().setDate(new Date().getDate() - new Date().getDay() +1)).setUTCHours(0,0,0,0)
-        const lastDayOfWeek = new Date(new Date().setDate(new Date().getDate() + (6 - new Date().getDay() +1))).setUTCHours(0,0,0,0)
-        const timelines = await this.timelineRepository.find({
-            where: {
-                date: Between(new Date(firstDayOfWeek), new Date(lastDayOfWeek))
-            },
-            relations: {
-                user: true
-            },
-            select: {
-                user: {
-                    name: true
-                }
-            }
-        })
-        return timelines
-    }
-
-    async getByMonthAndCab(cab: string, date: string) {
-        const currentDate = new Date(date)
-        const firstDayOfMonth = new Date(currentDate.setDate(1))
-        const lastDayOfMonth = new Date(currentDate.setDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate())) 
-        const timelines = await this.timelineRepository.find({
-            where: {
-                cabId: Number(cab),
-                date: Between(firstDayOfMonth, lastDayOfMonth)
-            },
-            relations: {
-                user: true
-            },
-            select: {
-                user: {
-                    name: true
-                }
-            }
-        })
-        return timelines
-    }
-
-    async getOfCabInMonth (cab: string, date: string) {
-        const today = new Date(date)
-        const year = today.getFullYear()
-        const month = today.getMonth()
-        const countDays = new Date(year, month, 0).getDate()
-        let datesList = []
-            for (let i = 1; i < countDays; i++) {
-            datesList.push({
-                id: null,
-                date: new Date(Date.UTC(year, month, i, 0, 0, 0)),
-                timeOfDay: 'morning',
-                cabId: cab,
-                userId: null,
-                user: {
-                    name: '...'
-                }
-            })
-            datesList.push({
-                id: null,
-                date: new Date(Date.UTC(year, month, i, 0, 0, 0)),
-                timeOfDay: 'evening',
-                cabId: cab,
-                userId: null,
-                user: {
-                    name: '...'
-                }
-            })
-            }
-        let timelines = await this.getByMonthAndCab(cab, date)
-        const result = [...timelines, ...datesList]
-        console.log(result)
-        const res = result.reduce((o, i) => {
-        if (!o.find(v => String(v.date) === String(i.date) && v.timeOfDay === i.timeOfDay)) {
-            o.push(i);
-        }
-        return o;
-        
-}, []);
-        res.sort((a,b) => a.date - b.date)
-        return res
-    }
-
-    async getByMonthAndById(id: string, date: string) {
-        const currentDate = new Date(date)
-        const firstDayOfMonth = new Date(currentDate.setDate(1))
-        const lastDayOfMonth = new Date(currentDate.setDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate())) 
-        const timelines = await this.timelineRepository.find({
-            where: {
-                userId: Number(id),
-                date: Between(firstDayOfMonth, lastDayOfMonth)
-            },
-             relations: {
-                user: true
-            },
-            select: {
-                user: {
-                    name: true
-                }
-            }
-        })
-        return timelines
-    }
-
     async create(dto: CreateTimelineDto): Promise<TimelineEntity>  {
        const timeline = this.timelineRepository.create(dto)
        return this.timelineRepository.save(timeline)
@@ -142,4 +39,86 @@ export class TimelineService {
     async delete(id: string): Promise<void>  {
         await this.timelineRepository.delete({id: Number(id)})
     }
+
+    async findByDates(startDate: Date, endDate: Date) {
+        
+        const timelines = await this.timelineRepository.find({
+            where: {
+                date: Between(new Date(startDate), new Date(endDate))
+            },
+            relations: {
+                user: true
+            },
+            select: {
+                user: {
+                    name: true
+                }
+            }
+        })
+        return timelines
+    }
+
+     async findByCabAndDates(cabId: string, startDate: Date, endDate: Date) {
+        
+        const timelines = await this.timelineRepository.find({
+            where: {
+                cabId: Number(cabId),
+                date: Between(new Date(startDate), new Date(endDate))
+            },
+            relations: {
+                user: true
+            },
+            select: {
+                user: {
+                    name: true
+                }
+            }
+        })
+        return timelines
+    }
+
+    async findByUserAndDates(id: string, startDate: Date, endDate: Date) {
+        
+        const timelines = await this.timelineRepository.find({
+            where: {
+                userId: Number(id),
+                date: Between(new Date(startDate), new Date(endDate))
+            },
+            relations: {
+                user: true
+            },
+            select: {
+                user: {
+                    name: true
+                }
+            }
+        })
+        return timelines
+    }
+
+    async findByUserAndCabAndDates(id: string, startDate: Date, endDate: Date, cab: string) {
+        
+        const timelines = await this.timelineRepository.find({
+            where: {
+                userId: Number(id),
+                cabId: Number(cab),
+                date: Between(new Date(startDate), new Date(endDate))
+            },
+            relations: {
+                user: true
+            },
+            select: {
+                user: {
+                    name: true
+                }
+            }
+        })
+        return timelines
+    }
+
+   
+
+    
+
+    
 }

@@ -12,12 +12,8 @@ function Content({ items, updateUser, users, day, date, addUser }) {
             className={styles.icon}
             icon={day === "morning" ? faSun : faMoon}
           />
-          <select
-            value={users.id}
-            defaultValue={"..."}
-            onChange={(e) => addUser(e, date, day)}
-            name="select"
-          >
+          <select onChange={(e) => addUser(e, date, day)} name="select">
+            <option value="">...</option>
             {users.map((user) => (
               <option value={user.id} key={user.id}>
                 {user.name}
@@ -33,12 +29,13 @@ function Content({ items, updateUser, users, day, date, addUser }) {
               icon={item.timeOfDay === "morning" ? faSun : faMoon}
             />
             <select
-              value={item.userId}
+              defaultValue={item.userId}
               onChange={(e) =>
                 updateUser(item.id, e, item.date, item.timeOfDay)
               }
               name="select"
             >
+              <option value="">...</option>
               {users.map((user) => (
                 <option value={user.id} key={user.id}>
                   {user.name}

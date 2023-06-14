@@ -1,6 +1,7 @@
 import axios from "axios";
 import styles from "./style.module.css";
 import Card from "../../UI/CardSchedule/Card";
+import Notification from "../../UI/Notification/Notification";
 import Loader from "../../UI/Loader/Loader";
 import moment from "moment";
 import "moment/locale/ru";
@@ -11,14 +12,21 @@ function Table({ datesList, users, cab }) {
   const [listOfTimeline, setlistOfTimeline] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
 
-  
+  function getTimeLine() {
+    const startOfMonth = moment().startOf("month").format("YYYY-MM-DD");
+    const endOfMonth = moment().endOf("month").format("YYYY-MM-DD");
+
+    axios
+      .get(`timeline/filter?startDate=${startOfMonth}&endDate=${endOfMonth}`)
+      .then((res) => {
+        const data = res.data;
+        setlistOfTimeline(data);
+        setIsLoading(false);
+      });
+  }
 
   useEffect(() => {
-    axios.get("timeline/").then((res) => {
-      const data = res.data;
-      setlistOfTimeline(data);
-      setIsLoading(false);
-    });
+    getTimeLine()
   }, []);
   function addUser(e, date, timeOfDay) {
     axios.post("timeline/", {
@@ -31,8 +39,9 @@ function Table({ datesList, users, cab }) {
     console.log("addUser");
   }
   function updateUser(id, e, date, timeOfDay) {
-    if (Number(e.target.value) === 22) {
-      axios.delete(`timeline/${id}`)
+    console.log(e.target.value, id);
+    if (!e.target.value.length) {
+      axios.delete(`timeline/${id}`);
       console.log("delete");
     } else {
       axios.put(`timeline/${id}`, {
@@ -40,9 +49,10 @@ function Table({ datesList, users, cab }) {
         timeOfDay: timeOfDay,
         userId: Number(e.target.value),
         cabId: cab,
-      });
+      })
       console.log("update");
     }
+    
   }
   return (
     <div>
@@ -86,6 +96,7 @@ function Table({ datesList, users, cab }) {
       ) : (
         <Loader></Loader>
       )}
+      {/* <Notification title={'Ошибка'} message={'Ошибка загрузки данных на сервер'}/> */}
     </div>
   );
 }

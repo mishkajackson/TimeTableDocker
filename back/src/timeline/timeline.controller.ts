@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { TimelineService } from './timeline.service';
 import { CreateTimelineDto } from './dto/create-timeline.dto';
 
@@ -11,24 +11,40 @@ export class TimelineController {
         return this.timelineService.getAll()
     }
 
-    @Get('week')
-    async getCurrentWeek() {
-        return this.timelineService.getCurrentWeek()
+    @Get('user/:id/filter')
+    async findByUserAndDates(
+        @Param('id') id:string, 
+        @Query('startDate') startDate: Date, 
+        @Query('endDate') endDate: Date,
+        ) {
+        return this.timelineService.findByUserAndDates(id, startDate, endDate)
     }
 
-    @Get('monthbyid/:id/:date')
-    async getByMonthAndById(@Param('id') id:string, @Param('date') date:string) {
-        return this.timelineService.getByMonthAndById(id, date)
+    @Get('user/:id/cab/:cab/filter')
+    async findByUserAndCabAndDates(
+        @Param('id') id:string, 
+        @Param('cab') cab: string,
+        @Query('startDate') startDate: Date, 
+        @Query('endDate') endDate: Date,
+        ) {
+        return this.timelineService.findByUserAndCabAndDates(id, startDate, endDate, cab)
     }
 
-    @Get('month/:cab/:date')
-    async getByMonthAndCab(@Param('cab') cab:string, @Param('date') date:string) {
-        return this.timelineService.getByMonthAndCab(cab, date)
+    @Get('cab/:cab/filter')
+    async findByCabAndDates(
+        @Param('cab') cab:string, 
+        @Query('startDate') startDate: Date, 
+        @Query('endDate') endDate: Date,
+        ) {
+        return this.timelineService.findByCabAndDates(cab, startDate, endDate)
     }
 
-    @Get('cabmonth/:cab/:date')
-    async getOfCabInMonth(@Param('cab') cab:string, @Param('date') date:string) {
-        return this.timelineService.getOfCabInMonth(cab, date)
+    @Get('filter')
+    async findByDates(
+        @Query('startDate') startDate: Date, 
+        @Query('endDate') endDate: Date,
+        ) {
+        return this.timelineService.findByDates(startDate, endDate)
     }
 
 

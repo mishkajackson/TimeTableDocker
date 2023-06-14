@@ -20,18 +20,13 @@ function Schedule() {
   const [listOfTimeline, setlistOfTimeline] = useState(
     JSON.parse(localStorage.getItem("localStorageListSchedule") || "[]")
   );
-  const [localStorageListSchedule, setlocalStorageListSchedule] = useState();
-  const [localStorageUsers, setlocalStorageUsers] = useState();
-  const [updateTime, setupdateTime] = useState();
+
 
  
 
   useEffect(() => {
     axios.get("users/").then((res) => {
       setUsers(res.data);
-      setlocalStorageUsers(
-        localStorage.setItem("users", JSON.stringify(res.data))
-      );
       setDatesList(setDaysOfMonth);
     });
   }, []);
