@@ -10,6 +10,7 @@ import moment from 'moment';
 function Today() {
     const [selectedDay, setSelectedDay] = useState(moment().format('DD.MM.YYYY'));
     const [currentWeekDates, setCurrentWeekDates] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         axios
           .get(`weekdates`)
@@ -34,6 +35,7 @@ function Today() {
           .get(`timeline/filter?startDate=${startOfWeek}&endDate=${endOfWeek}`)
           .then((res) => {
             setlistOfTimeline(res.data);
+            setIsLoading(false)
           })
           .catch((error) => console.log(error));
     }, [])
@@ -48,7 +50,7 @@ function Today() {
             ></DatePicker>
           </div>
         </div>
-        {listOfTimeline.length ? (
+        {!isLoading ? (
           <div className={styles.content}>
             <div className={styles.cards}>
               <Card

@@ -26,21 +26,8 @@ function Schedule() {
       setUsers(res.data);
       setDatesList(setDaysOfMonth);
     });
-    dates();
   }, []);
 
-  function dates() {
-    const startOfMonth = moment(today).startOf("month");
-    const endOfMonth = moment(today).endOf("month");
-    let dateList = [];
-    let day = startOfMonth
-    while (day <= endOfMonth) {
-      dateList.push(moment(day).format("YYYY-MM-DD"));
-      day = moment(day).clone().add(1, "d");
-    }
-
-    console.log(dateList);
-  }
 
   function setDaysOfMonth() {
     const startOfMonth = moment(today).startOf("month");
