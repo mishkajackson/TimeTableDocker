@@ -57,9 +57,6 @@
 .dots {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-evenly;
 }
 
 .dot {
@@ -67,5 +64,6 @@
   width: 4px;
   background-color: #bbb;
   border-radius: 49%;
+  margin: 0 auto;
 }
 
