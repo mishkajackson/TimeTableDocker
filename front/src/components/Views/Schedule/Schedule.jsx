@@ -1,23 +1,16 @@
 import axios from "axios";
-<<<<<<< HEAD
-import moment from "moment";
-import "moment/locale/ru";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-=======
 import styles from "./style.module.css";
 import Table from "../../UI/Table/Table";
 import UpdateTime from "../../UI/UpdateTime/UpdateTime";
 
->>>>>>> parent of 28a142a (Swipe test)
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight,
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import styles from "./style.module.css";
-import Table from "../../UI/Table/Table";
+import moment from "moment";
+
 
 
 
@@ -25,9 +18,6 @@ function Schedule() {
   const [tab, setTab] = useState("tab1");
   const [today, setDay] = useState(new Date());
   const [datesList, setDatesList] = useState([]);
-<<<<<<< HEAD
-  const [users, setUsers] = useState([]);
-=======
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem("users") || "[]")
   );
@@ -37,7 +27,6 @@ function Schedule() {
 
 
  
->>>>>>> parent of 28a142a (Swipe test)
 
   useEffect(() => {
     axios.get("users/").then((res) => {
