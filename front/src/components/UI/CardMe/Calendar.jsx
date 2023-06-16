@@ -3,14 +3,29 @@ import moment from 'moment'
 import "moment/locale/ru";
 import styles from "./style.module.css";
 import { useEffect, useState } from 'react';
+import axios from "axios";
 
 import Dot from './Dot'
 
 function Calendar({ datesList, today }) {
   const weekdays = moment.weekdaysMin(true);
   const [selectDay, setSelectDay] = useState(today);
+  const [listOfTimeline, setListOfTimeline] = useState([]);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
-  const shifts = ['02.06.2023', '13.06.2023', '27.06.2023']
+  useEffect(() => {
+    const startOfMonth = moment().startOf("month").format("YYYY-MM-DD");
+    const endOfMonth = moment().endOf("month").format("YYYY-MM-DD");
+    axios
+      .get(
+        `timeline/user/${user.id}/filter?startDate=${startOfMonth}&endDate=${endOfMonth}`
+      )
+      .then((res) => {
+        setListOfTimeline(res.data);
+        console.log(res.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div className={styles.main}>
@@ -46,9 +61,9 @@ function Calendar({ datesList, today }) {
               >
                 {date.format("D")}
               </div>
-                  <div className={styles.dots}>
-                    <Dot date={date}></Dot>
-                  </div>
+              <div>
+                <Dot items={listOfTimeline} date={date}></Dot>
+              </div>
             </div>
           ))}
         </div>
