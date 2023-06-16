@@ -69,12 +69,7 @@ function Calendar({ datesList, today }) {
           ))}
         </div>
       </div>
-      <div>
-        <h3>Фильтры</h3>
-        <p>Зеленый - платные</p>
-        <p>Красный - дежурство</p>
-        <p>Синий - ЭЭГ</p>
-      </div>
+      <div>фильтры</div>
     </div>
   );
 }

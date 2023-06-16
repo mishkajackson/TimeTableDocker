@@ -21,7 +21,6 @@
   text-transform: capitalize;
   font-size: 12px;
   animation: fade 0.5s;
-  z-index: 999;
 }
 
 .title svg {
