@@ -4,7 +4,11 @@ import moment from "moment";
 function CardPaid({ items, users, cab, addUser, updateUser, date, day, icon }) {
   // console.log(items);
   const filteredItems = items.filter(
-    (item) => moment(item.date).format('DD.MM.YYYY') === date && item.timeOfDay === day && item.cabId === cab
+    (item) =>
+      moment(item.date).format("YYYY-DD-MM") ===
+        moment(date).format("YYYY-DD-MM") &&
+      item.timeOfDay === day &&
+      item.cabId === cab
   );
     
 

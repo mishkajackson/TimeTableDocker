@@ -1,21 +1,18 @@
 import axios from "axios";
-import { useRef } from 'react';
+import moment from "moment";
+import "moment/locale/ru";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-
-import styles from "./style.module.css";
-import Table from "../../UI/Table/Table";
-import UpdateTime from "../../UI/UpdateTime/UpdateTime";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight,
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
+import styles from "./style.module.css";
+import Table from "../../UI/Table/Table";
+
+
 
 function Schedule() {
   const [swipe, setSwipe] = useState(0);
@@ -23,24 +20,36 @@ function Schedule() {
   const [today, setDay] = useState(new Date());
   const [datesList, setDatesList] = useState([]);
   const [users, setUsers] = useState([]);
-  const [listOfTimeline, setlistOfTimeline] = useState([])
 
   useEffect(() => {
     axios.get("users/").then((res) => {
       setUsers(res.data);
       setDatesList(setDaysOfMonth);
     });
+    dates();
   }, []);
 
-  function setDaysOfMonth() {
-    const year = today.getFullYear();
-    const month = today.getMonth();
-    const countDays = 33 - new Date(year, month, 33).getDate();
+  function dates() {
+    const startOfMonth = moment(today).startOf("month");
+    const endOfMonth = moment(today).endOf("month");
     let dateList = [];
-    for (let i = 1; i <= countDays; i++) {
-      if (new Date(year, month, i).getDay() !== 0) {
-        dateList.push(new Date(year, month, i).toLocaleDateString("ru-RU"));
-      }
+    let day = startOfMonth
+    while (day <= endOfMonth) {
+      dateList.push(moment(day).format("YYYY-MM-DD"));
+      day = moment(day).clone().add(1, "d");
+    }
+
+    console.log(dateList);
+  }
+
+  function setDaysOfMonth() {
+    const startOfMonth = moment(today).startOf("month");
+    const endOfMonth = moment(today).endOf("month");
+    let dateList = [];
+    let day = startOfMonth;
+    while (day <= endOfMonth) {
+      dateList.push(moment(day).format("YYYY-MM-DD"));
+      day = moment(day).clone().add(1, "d");
     }
     return dateList;
   }

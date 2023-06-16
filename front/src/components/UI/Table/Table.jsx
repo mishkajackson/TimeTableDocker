@@ -63,8 +63,8 @@ function Table({ datesList, users, cab }) {
               <div className={styles.card}>
                 <div className={styles.blocks}>
                   <div className={styles.block}>
-                    <p> {moment({ date }).format("dd")}</p>
-                    <p>{moment({ date }).format("DD")}</p>
+                    <p> {moment(date).format("dd")}</p>
+                    <p>{moment(date).format("DD")}</p>
                   </div>
                   <div className={styles.block}>
                     <Card
