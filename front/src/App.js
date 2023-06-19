@@ -17,11 +17,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />} >
-            <Route index element={<Today />} />
+            {/* <Route index element={<Today />} />
             <Route path="Today" element={<Today />} />
             <Route path="Me" element={<Me />} />
             <Route path="Schedule" element={<Schedule />} />
-            <Route path="User" element={<User />} />
+            <Route path="User" element={<User />} /> */}
           </Route>
           <Route path="Login" element={<Auth />} />
         </Routes>

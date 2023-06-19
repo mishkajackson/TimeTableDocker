@@ -50,7 +50,14 @@ function Card({title, items, selectedDay, cab}) {
             <div className={styles.blocks}>
               <h1>{title}</h1>
               <div className={styles.row}>
-                <p style={{ paddingLeft: "20px" }}>...</p>
+                <div className={styles.block}>
+                  <FontAwesomeIcon className={styles.icon} icon={faSun} />
+                  <p>...</p>
+                </div>
+                <div className={styles.block}>
+                  <FontAwesomeIcon className={styles.icon} icon={faMoon} />
+                  <p>...</p>
+                </div>
               </div>
             </div>
           </div>

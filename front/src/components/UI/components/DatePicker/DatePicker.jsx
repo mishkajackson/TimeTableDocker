@@ -7,9 +7,7 @@ import styles from './style.module.css';
 function DatePicker({ currentWeekDates, setSelectedDay, selectedDay}) {
     return (
       <div>
-        <div className={styles.titleMonth}>
-          <h1>{new Date().toLocaleDateString("ru-RU", { month: "long" })}</h1>
-        </div>
+        
         <div className={styles.datePicker}>
           {currentWeekDates.map((date, index) =>
             date !== selectedDay ? (

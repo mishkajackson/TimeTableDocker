@@ -1,7 +1,8 @@
 import axios from "axios";
 import styles from "./style.module.css";
 import Table from "../../UI/Table/Table";
-import UpdateTime from "../../UI/UpdateTime/UpdateTime";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,15 +16,12 @@ import moment from "moment";
 
 
 function Schedule() {
-  const [tab, setTab] = useState("tab1");
+   const [swipe, setSwipe] = useState(0);
+   const [tab, setTab] = useState("0");
   const [today, setDay] = useState(new Date());
   const [datesList, setDatesList] = useState([]);
-  const [users, setUsers] = useState(
-    JSON.parse(localStorage.getItem("users") || "[]")
-  );
-  const [listOfTimeline, setlistOfTimeline] = useState(
-    JSON.parse(localStorage.getItem("localStorageListSchedule") || "[]")
-  );
+  const [users, setUsers] = useState([]);
+  const [listOfTimeline, setlistOfTimeline] = useState([]);
 
 
  
@@ -61,31 +59,19 @@ function Schedule() {
   }
 
   function changeTab(e) {
+     if (e.target.id === "0") {
+       setTab("0");
+       swipe.slideTo(0);
+     }
     if (e.target.id === "1") {
-      setTab("tab1");
+      setTab("1");
+      swipe.slideTo(1);
     }
     if (e.target.id === "2") {
-      setTab("tab2");
-    }
-    if (e.target.id === "3") {
-      setTab("tab3");
+       setTab("2");
+       swipe.slideTo(2);
     }
   }
-
-  const pages = [
-    {
-      id: "tab1",
-      component: <Table datesList={datesList} users={users} cab={4}></Table>,
-    },
-    {
-      id: "tab2",
-      component: <Table datesList={datesList} users={users} cab={3}></Table>,
-    },
-    {
-      id: "tab3",
-      component: <Table datesList={datesList} users={users} cab={5}></Table>,
-    },
-  ];
 
   return (
     <div>
@@ -105,22 +91,22 @@ function Schedule() {
       <div className={styles.content}>
         <div className={styles.nav}>
           <p
-            id="1"
-            style={tab === "tab1" ? { background: "#e4e4e4" } : {}}
+            id="0"
+            style={tab === "0" ? { background: "#e4e4e4" } : {}}
             onClick={(e) => changeTab(e)}
           >
             Платные
           </p>
           <p
-            id="2"
-            style={tab === "tab2" ? { background: "#e4e4e4" } : {}}
+            id="1"
+            style={tab === "1" ? { background: "#e4e4e4" } : {}}
             onClick={(e) => changeTab(e)}
           >
             ЭЭГ
           </p>
           <p
-            id="3"
-            style={tab === "tab3" ? { background: "#e4e4e4" } : {}}
+            id="2"
+            style={tab === "2" ? { background: "#e4e4e4" } : {}}
             onClick={(e) => changeTab(e)}
           >
             Дежурство
@@ -128,11 +114,22 @@ function Schedule() {
         </div>
       </div>
       <div>
-        {pages
-          .filter((page) => page.id === tab)
-          .map((item) => (
-            <div key={item.id}>{item.component}</div>
-          ))}
+        <Swiper
+          spaceBetween={200}
+          slidesPerView={1}
+          onSlideChange={(swiper) => setTab(String(swiper.snapIndex))}
+          onBeforeInit={(swipper) => setSwipe(swipper)}
+        >
+          <SwiperSlide>
+            <Table datesList={datesList} users={users} cab={4}></Table>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Table datesList={datesList} users={users} cab={3}></Table>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Table datesList={datesList} users={users} cab={5}></Table>
+          </SwiperSlide>
+        </Swiper>
       </div>
     </div>
   );

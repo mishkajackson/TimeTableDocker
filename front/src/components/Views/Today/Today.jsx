@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Card from '../../UI/CardToday/Card';
-import Loader from '../../UI/Loader/Loader';
-import DatePicker from '../../UI/DatePicker/DatePicker';
+import Loader from "../../UI/components/Loader/Loader";
+import DatePicker from '../../UI/components/DatePicker/DatePicker'
+import Title from "../../UI/components/Title/Title";
 import styles from './style.module.css';
 import moment from 'moment';
 
@@ -42,6 +43,7 @@ function Today() {
     return (
       <div>
         <div className={styles.title}>
+          <Title />
           <div>
             <DatePicker
               currentWeekDates={currentWeekDates}

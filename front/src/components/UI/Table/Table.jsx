@@ -1,8 +1,7 @@
 import axios from "axios";
 import styles from "./style.module.css";
-import Card from "../../UI/CardSchedule/Card";
-import Notification from "../../UI/Notification/Notification";
-import Loader from "../../UI/Loader/Loader";
+import Card from "../CardSchedule/Card";
+import Loader from "../components/Loader/Loader";
 import moment from "moment";
 import "moment/locale/ru";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
@@ -30,7 +29,7 @@ function Table({ datesList, users, cab }) {
   }, []);
   function addUser(e, date, timeOfDay) {
     axios.post("timeline/", {
-      date: moment.utc(date, "DD.MM.YYYY").format(),
+      date: moment.utc(date).format(),
       timeOfDay: timeOfDay,
       userId: Number(e.target.value),
       cabId: cab,

@@ -3,7 +3,7 @@ import moment from 'moment'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import Loader from '../../UI/Loader/Loader';
+import Loader from '../../UI/components/Loader/Loader';
 import styles from './style.module.css';
 
 import { useState, useEffect } from "react";
