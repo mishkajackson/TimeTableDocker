@@ -115,19 +115,19 @@ function Schedule() {
       </div>
       <div>
         <Swiper
-          spaceBetween={200}
+          spaceBetween={0}
           slidesPerView={1}
           onSlideChange={(swiper) => setTab(String(swiper.snapIndex))}
           onBeforeInit={(swipper) => setSwipe(swipper)}
         >
           <SwiperSlide>
-            <Table datesList={datesList} users={users} cab={4}></Table>
+            <Table datesList={datesList} users={users} cab={4} today={today}></Table>
           </SwiperSlide>
           <SwiperSlide>
-            <Table datesList={datesList} users={users} cab={3}></Table>
+            <Table datesList={datesList} users={users} cab={3} today={today}></Table>
           </SwiperSlide>
           <SwiperSlide>
-            <Table datesList={datesList} users={users} cab={5}></Table>
+            <Table datesList={datesList} users={users} cab={5} today={today}></Table>
           </SwiperSlide>
         </Swiper>
       </div>

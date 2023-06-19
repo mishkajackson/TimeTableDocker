@@ -14,15 +14,15 @@ function Calendar({ datesList, today }) {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   useEffect(() => {
-    const startOfMonth = moment().startOf("month").format("YYYY-MM-DD");
-    const endOfMonth = moment().endOf("month").format("YYYY-MM-DD");
+    const startOfMonth = moment(today).startOf("month").startOf("week").format("YYYY-MM-DD");
+    const endOfMonth = moment(today).endOf("month").endOf("week").format("YYYY-MM-DD");
+
     axios
       .get(
         `timeline/user/${user.id}/filter?startDate=${startOfMonth}&endDate=${endOfMonth}`
       )
       .then((res) => {
         setListOfTimeline(res.data);
-        console.log(res.data);
       })
       .catch((error) => console.log(error));
   }, []);

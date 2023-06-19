@@ -7,13 +7,13 @@ import "moment/locale/ru";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 
-function Table({ datesList, users, cab }) {
+function Table({ datesList, users, cab, today }) {
   const [listOfTimeline, setlistOfTimeline] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
 
   function getTimeLine() {
-    const startOfMonth = moment().startOf("month").format("YYYY-MM-DD");
-    const endOfMonth = moment().endOf("month").format("YYYY-MM-DD");
+    const startOfMonth = moment(today).startOf("month").format("YYYY-MM-DD");
+    const endOfMonth = moment(today).endOf("month").format("YYYY-MM-DD");
 
     axios
       .get(`timeline/filter?startDate=${startOfMonth}&endDate=${endOfMonth}`)
@@ -25,8 +25,8 @@ function Table({ datesList, users, cab }) {
   }
 
   useEffect(() => {
-    getTimeLine()
-  }, []);
+    getTimeLine();
+  }, [today]);
   function addUser(e, date, timeOfDay) {
     axios.post("timeline/", {
       date: moment.utc(date).format(),
