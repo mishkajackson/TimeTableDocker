@@ -5,28 +5,9 @@ import Loader from "../components/Loader/Loader";
 import moment from "moment";
 import "moment/locale/ru";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
 
-function Table({ datesList, users, cab, today }) {
-  const [listOfTimeline, setlistOfTimeline] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
+function Table({ datesList, users, cab, isLoading, listOfTimeline }) {
 
-  function getTimeLine() {
-    const startOfMonth = moment(today).startOf("month").format("YYYY-MM-DD");
-    const endOfMonth = moment(today).endOf("month").format("YYYY-MM-DD");
-
-    axios
-      .get(`timeline/filter?startDate=${startOfMonth}&endDate=${endOfMonth}`)
-      .then((res) => {
-        const data = res.data;
-        setlistOfTimeline(data);
-        setIsLoading(false);
-      });
-  }
-
-  useEffect(() => {
-    getTimeLine();
-  }, [today]);
   function addUser(e, date, timeOfDay) {
     axios.post("timeline/", {
       date: moment.utc(date).format(),
@@ -48,10 +29,9 @@ function Table({ datesList, users, cab, today }) {
         timeOfDay: timeOfDay,
         userId: Number(e.target.value),
         cabId: cab,
-      })
+      });
       console.log("update");
     }
-    
   }
   return (
     <div>

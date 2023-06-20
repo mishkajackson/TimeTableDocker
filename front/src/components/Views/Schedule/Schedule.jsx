@@ -12,19 +12,14 @@ import {
 import { useState, useEffect } from "react";
 import moment from "moment";
 
-
-
-
 function Schedule() {
    const [swipe, setSwipe] = useState(0);
    const [tab, setTab] = useState("0");
   const [today, setDay] = useState(new Date());
   const [datesList, setDatesList] = useState([]);
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [listOfTimeline, setlistOfTimeline] = useState([]);
-
-
- 
 
   useEffect(() => {
     axios.get("users/").then((res) => {
@@ -32,6 +27,24 @@ function Schedule() {
       setDatesList(setDaysOfMonth);
     });
   }, []);
+
+  useEffect(() => {
+    function getTimeLine() {
+      const startOfMonth = moment(today).startOf("month").format("YYYY-MM-DD");
+      const endOfMonth = moment(today).endOf("month").format("YYYY-MM-DD");
+
+      axios
+        .get(`timeline/filter?startDate=${startOfMonth}&endDate=${endOfMonth}`)
+        .then(async (res) => {
+          const data = await res.data;
+          setlistOfTimeline(data);
+          setIsLoading(false);
+        })
+        .catch((error) => console.log(error));
+    }
+    getTimeLine();
+    console.log("useEffect");
+  }, [today]);
 
 
   function setDaysOfMonth() {
@@ -121,13 +134,34 @@ function Schedule() {
           onBeforeInit={(swipper) => setSwipe(swipper)}
         >
           <SwiperSlide>
-            <Table datesList={datesList} users={users} cab={4} today={today}></Table>
+            <Table
+              datesList={datesList}
+              users={users}
+              cab={4}
+              today={today}
+              listOfTimeline={listOfTimeline}
+              isLoading={isLoading}
+            ></Table>
           </SwiperSlide>
           <SwiperSlide>
-            <Table datesList={datesList} users={users} cab={3} today={today}></Table>
+            <Table
+              datesList={datesList}
+              users={users}
+              cab={3}
+              today={today}
+              listOfTimeline={listOfTimeline}
+              isLoading={isLoading}
+            ></Table>
           </SwiperSlide>
           <SwiperSlide>
-            <Table datesList={datesList} users={users} cab={5} today={today}></Table>
+            <Table
+              datesList={datesList}
+              users={users}
+              cab={5}
+              today={today}
+              listOfTimeline={listOfTimeline}
+              isLoading={isLoading}
+            ></Table>
           </SwiperSlide>
         </Swiper>
       </div>
