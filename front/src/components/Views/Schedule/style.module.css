@@ -11,7 +11,7 @@
   text-align: center;
   background-color: #FFFFFF;
   color: #4c4c4c;
-  height: 70px;
+  height: 108px;
   text-transform: capitalize;
   display: flex;
   flex-direction: row;
@@ -20,18 +20,17 @@
   border-bottom: 1px solid #ebebeb;
   text-transform: capitalize;
   font-size: 12px;
-  animation: fade 0.5s;
   z-index: 999;
 }
 
 .title svg {
   padding: 25px 40px;
   border-radius: 8px;
-  animation: fade 0.5s;
+
 }
 
 .content {
-  margin: 80px 10px 10px 10px;
+  margin: 60px 10px 10px 10px;
 }
 
 .nav {
@@ -40,24 +39,23 @@
   flex-wrap: nowrap;
   justify-content: space-around;
   align-items: center;
-  background: #f6f6f6;
   border-radius: 8px;
-  animation: fade 0.5s;
+
 }
 
 .nav p {
-  background: #f4f4f4;
-  padding: 10px;
-  border-radius: 8px;
-  color: #5d5d5d;
-  width: 100px;
-  text-align: center;
-  transition: all 0.3s;
-  margin: 5px;
+  border-bottom: 2px solid #FFFFFF;
+    padding: 10px;
+    color: #5d5d5d;
+    text-align: center;
+    transition: border 0.3s;
+    margin: 0px;
+    width: 80px;
+    z-index: 1000;
 }
 
 .nav p:hover {
-  background: #e4e4e4;
+  border-bottom: 2px solid #bdbdbd
 }
 
 .navActive {

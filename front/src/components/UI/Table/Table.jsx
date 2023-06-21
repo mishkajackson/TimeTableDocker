@@ -44,7 +44,7 @@ function Table({ datesList, users, cab, isLoading, listOfTimeline, callErrorNoti
             <div key={index} className={styles.cards}>
               <div className={styles.card}>
                 <div className={styles.blocks}>
-                  <div className={styles.block}>
+                  <div className={styles.block} style={{borderRight: '1px solid #e2e2e2'}}>
                     <p> {moment(date).format("dd")}</p>
                     <p>{moment(date).format("DD")}</p>
                   </div>
