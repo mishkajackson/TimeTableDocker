@@ -1,6 +1,7 @@
 import axios from "axios";
 import styles from "./style.module.css";
 import Table from "../../UI/Table/Table";
+import Loader from "../../UI/components/Loader/Loader";
 import Notification from "../../UI/Notification/Notification";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -45,7 +46,6 @@ function Schedule() {
         .catch((error) => console.log(error));
     }
     getTimeLine();
-    console.log("useEffect");
   }, [today]);
 
 
@@ -135,48 +135,53 @@ function Schedule() {
           </p>
         </div>
       </div>
-      <div>
-        <Swiper
-          spaceBetween={0}
-          slidesPerView={1}
-          onSlideChange={(swiper) => setTab(String(swiper.snapIndex))}
-          onBeforeInit={(swipper) => setSwipe(swipper)}
-        >
-          <SwiperSlide>
-            <Table
-              datesList={datesList}
-              users={users}
-              cab={4}
-              today={today}
-              listOfTimeline={listOfTimeline}
-              isLoading={isLoading}
-              callErrorNotification={callErrorNotification}
-            ></Table>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Table
-              datesList={datesList}
-              users={users}
-              cab={3}
-              today={today}
-              listOfTimeline={listOfTimeline}
-              isLoading={isLoading}
-              callErrorNotification={callErrorNotification}
-            ></Table>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Table
-              datesList={datesList}
-              users={users}
-              cab={5}
-              today={today}
-              listOfTimeline={listOfTimeline}
-              isLoading={isLoading}
-              callErrorNotification={callErrorNotification}
-            ></Table>
-          </SwiperSlide>
-        </Swiper>
-      </div>
+      {!isLoading ? (
+        <div>
+          <Swiper
+            spaceBetween={0}
+            slidesPerView={1}
+            onSlideChange={(swiper) => setTab(String(swiper.snapIndex))}
+            onBeforeInit={(swipper) => setSwipe(swipper)}
+          >
+            <SwiperSlide>
+              <Table
+                datesList={datesList}
+                users={users}
+                cab={4}
+                today={today}
+                listOfTimeline={listOfTimeline}
+                isLoading={isLoading}
+                callErrorNotification={callErrorNotification}
+              ></Table>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Table
+                datesList={datesList}
+                users={users}
+                cab={3}
+                today={today}
+                listOfTimeline={listOfTimeline}
+                isLoading={isLoading}
+                callErrorNotification={callErrorNotification}
+              ></Table>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Table
+                datesList={datesList}
+                users={users}
+                cab={5}
+                today={today}
+                listOfTimeline={listOfTimeline}
+                isLoading={isLoading}
+                callErrorNotification={callErrorNotification}
+              ></Table>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      ) : (
+        <Loader></Loader>
+      )}
+
       {showNotification ? (
         <Notification
           title={"Ошибка"}
