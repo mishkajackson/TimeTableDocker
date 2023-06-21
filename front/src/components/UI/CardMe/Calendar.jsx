@@ -1,6 +1,7 @@
 
 import moment from 'moment'
 import "moment/locale/ru";
+import Check from './Check'
 import styles from "./style.module.css";
 import { useEffect, useState } from 'react';
 import axios from "axios";
@@ -12,6 +13,10 @@ function Calendar({ datesList, today }) {
   const [selectDay, setSelectDay] = useState(today);
   const [listOfTimeline, setListOfTimeline] = useState([]);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+
+  function setChecked(e) {
+    console.log(e)
+  }
 
   useEffect(() => {
     const startOfMonth = moment(today)
@@ -72,6 +77,14 @@ function Calendar({ datesList, today }) {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+      <div className={styles.checkList}>
+        <h1>Фильтры</h1>
+        <div>
+          <Check name={"Дежурство"} color={'red'} isChecked={true} setChecked={setChecked} />
+          <Check name={"ЭЭГ"} color={'yellow'} isChecked={true} setChecked={setChecked} />
+          <Check name={"Платные"} color={'blue'} isChecked={true} setChecked={setChecked} />
         </div>
       </div>
     </div>

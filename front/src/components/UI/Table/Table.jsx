@@ -7,7 +7,6 @@ import "moment/locale/ru";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 function Table({ datesList, users, cab, isLoading, listOfTimeline, callErrorNotification }) {
-
   function addUser(e, date, timeOfDay) {
     axios
       .post("timeline/", {
