@@ -11,7 +11,7 @@
   text-align: center;
   background-color: #FFFFFF;
   color: #4c4c4c;
-  height: 108px;
+  height: 70px;
   text-transform: capitalize;
   display: flex;
   flex-direction: row;
@@ -30,7 +30,7 @@
 }
 
 .content {
-  margin: 60px 10px 10px 10px;
+  margin: 80px 10px 10px 10px;
 }
 
 .nav {
@@ -44,14 +44,13 @@
 }
 
 .nav p {
-  border-bottom: 2px solid #FFFFFF;
+  border-bottom: 2px solid #f4f4f4;
     padding: 10px;
     color: #5d5d5d;
     text-align: center;
     transition: border 0.3s;
     margin: 0px;
     width: 80px;
-    z-index: 1000;
 }
 
 .nav p:hover {

@@ -1,7 +1,6 @@
 import axios from "axios";
 import styles from "./style.module.css";
 import Card from "../CardSchedule/Card";
-import Notification from "../Notification/Notification";
 import Loader from "../components/Loader/Loader";
 import moment from "moment";
 import "moment/locale/ru";
