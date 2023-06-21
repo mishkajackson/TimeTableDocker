@@ -1,25 +1,27 @@
 import axios from "axios";
 import styles from "./style.module.css";
 import Card from "../CardSchedule/Card";
+import Notification from "../Notification/Notification";
 import Loader from "../components/Loader/Loader";
 import moment from "moment";
 import "moment/locale/ru";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
-function Table({ datesList, users, cab, isLoading, listOfTimeline }) {
+function Table({ datesList, users, cab, isLoading, listOfTimeline, callErrorNotification }) {
 
   function addUser(e, date, timeOfDay) {
-    axios.post("timeline/", {
-      date: moment.utc(date).format(),
-      timeOfDay: timeOfDay,
-      userId: Number(e.target.value),
-      cabId: cab,
-    });
+    axios
+      .post("timeline/", {
+        date: moment.utc(date).format(),
+        timeOfDay: timeOfDay,
+        userId: Number(e.target.value),
+        cabId: cab,
+      })
+      .catch((error) => callErrorNotification());
 
     console.log("addUser");
   }
   function updateUser(id, e, date, timeOfDay) {
-    console.log(e.target.value, id);
     if (!e.target.value.length) {
       axios.delete(`timeline/${id}`);
       console.log("delete");
@@ -29,7 +31,8 @@ function Table({ datesList, users, cab, isLoading, listOfTimeline }) {
         timeOfDay: timeOfDay,
         userId: Number(e.target.value),
         cabId: cab,
-      });
+      })
+      .catch((error) => callErrorNotification())
       console.log("update");
     }
   }
@@ -75,7 +78,7 @@ function Table({ datesList, users, cab, isLoading, listOfTimeline }) {
       ) : (
         <Loader></Loader>
       )}
-      {/* <Notification title={'Ошибка'} message={'Ошибка загрузки данных на сервер'}/> */}
+      
     </div>
   );
 }

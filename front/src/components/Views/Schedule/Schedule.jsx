@@ -1,6 +1,7 @@
 import axios from "axios";
 import styles from "./style.module.css";
 import Table from "../../UI/Table/Table";
+import Notification from "../../UI/Notification/Notification";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
@@ -13,13 +14,14 @@ import { useState, useEffect } from "react";
 import moment from "moment";
 
 function Schedule() {
-   const [swipe, setSwipe] = useState(0);
-   const [tab, setTab] = useState("0");
+  const [swipe, setSwipe] = useState(0);
+  const [tab, setTab] = useState("0");
   const [today, setDay] = useState(new Date());
   const [datesList, setDatesList] = useState([]);
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [listOfTimeline, setlistOfTimeline] = useState([]);
+  const [showNotification, setShowNotofocation] = useState(false)
 
   useEffect(() => {
     axios.get("users/").then((res) => {
@@ -86,6 +88,13 @@ function Schedule() {
     }
   }
 
+  function callErrorNotification() {
+    setShowNotofocation(true)
+    setTimeout(() => {
+      setShowNotofocation(false);
+    }, 3000);
+  }
+
   return (
     <div>
       <div className={styles.title}>
@@ -141,6 +150,7 @@ function Schedule() {
               today={today}
               listOfTimeline={listOfTimeline}
               isLoading={isLoading}
+              callErrorNotification={callErrorNotification}
             ></Table>
           </SwiperSlide>
           <SwiperSlide>
@@ -151,6 +161,7 @@ function Schedule() {
               today={today}
               listOfTimeline={listOfTimeline}
               isLoading={isLoading}
+              callErrorNotification={callErrorNotification}
             ></Table>
           </SwiperSlide>
           <SwiperSlide>
@@ -161,10 +172,19 @@ function Schedule() {
               today={today}
               listOfTimeline={listOfTimeline}
               isLoading={isLoading}
+              callErrorNotification={callErrorNotification}
             ></Table>
           </SwiperSlide>
         </Swiper>
       </div>
+      {showNotification ? (
+        <Notification
+          title={"Ошибка"}
+          message={"Ошибка загрузки данных на сервер"}
+        />
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 }

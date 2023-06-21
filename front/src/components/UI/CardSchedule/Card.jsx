@@ -2,7 +2,6 @@ import Content from "./Content";
 import moment from "moment";
 
 function CardPaid({ items, users, cab, addUser, updateUser, date, day, icon }) {
-  // console.log(items);
   const filteredItems = items.filter(
     (item) =>
       moment(item.date).format("YYYY-DD-MM") ===

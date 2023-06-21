@@ -1,15 +1,17 @@
 import styles from './style.module.css'
-function Notification({title, message}) {
+import React, {useState, useEffect} from 'react'
+
+
+function Notification() {
+
     return (
-        <div className={styles.main}>
-            <div style={{ background: ''}} className={styles.title}>
-                {title}
-            </div>
-            <div className={styles.message}>
-                {message}
-            </div>
+
+        <div className={styles.notification}>
+          <div className={styles.message}>
+            <h1>Ошибка</h1>
+          </div>
         </div>
-    )
+    );
 }
 
-export default Notification
+export default Notification; 
