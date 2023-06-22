@@ -1,10 +1,12 @@
+import { useEffect } from "react";
 import styles from "./style.module.css";
 import moment from "moment";
 
-function Dot({ items, date }) {
+function Dot({ items, date, idCheckbox }) {
   const filteredItems = items.filter(
     (item) =>
-      moment(item.date).format("DD.MM.YYYY") === date.format("DD.MM.YYYY")
+      moment(item.date).format("DD.MM.YYYY") === date.format("DD.MM.YYYY") &&
+      idCheckbox.includes(item.cabId)
   );
 
   return (

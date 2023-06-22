@@ -14,10 +14,15 @@ function Calendar({ datesList, today }) {
   const [selectDay, setSelectDay] = useState(today);
   const [listOfTimeline, setListOfTimeline] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [checked, setChecked] = useState([3, 4, 5]);
   const user = JSON.parse(localStorage.getItem("user"));
 
-  function setChecked(e) {
-    console.log(e)
+  function handleChecked(id, isChecked) {
+    if (isChecked) {
+      setChecked([...checked, Number(id)]);
+    }else {
+      setChecked(checked.filter((item) => item !== Number(id)));
+    }
   }
 
   useEffect(() => {
@@ -80,7 +85,12 @@ function Calendar({ datesList, today }) {
                       {date.format("D")}
                     </div>
                     <div>
-                      <Dot items={listOfTimeline} date={date}></Dot>
+                      <Dot
+                        items={listOfTimeline}
+                        date={date}
+                        idCheckbox={checked}
+                        cab={3}
+                      ></Dot>
                     </div>
                   </div>
                 ))}
@@ -88,24 +98,27 @@ function Calendar({ datesList, today }) {
             </div>
             <div className={styles.checkList}>
               <h1>Фильтры</h1>
-              <div>
+              <div className={styles.cardCheckbox}>
                 <Check
-                  name={"Дежурство"}
-                  color={"red"}
-                  isChecked={true}
-                  setChecked={setChecked}
+                  id={5}
+                  label={"Дежурство"}
+                  color={"#ff5b5b"}
+                  checked={true}
+                  handleChecked={handleChecked}
                 />
                 <Check
-                  name={"ЭЭГ"}
-                  color={"yellow"}
-                  isChecked={true}
-                  setChecked={setChecked}
+                  id={3}
+                  label={"ЭЭГ"}
+                  color={"#6f7fff"}
+                  checked={true}
+                  handleChecked={handleChecked}
                 />
                 <Check
-                  name={"Платные"}
-                  color={"blue"}
-                  isChecked={true}
-                  setChecked={setChecked}
+                  id={4}
+                  label={"Платные"}
+                  color={"#00a600"}
+                  checked={true}
+                  handleChecked={handleChecked}
                 />
               </div>
             </div>

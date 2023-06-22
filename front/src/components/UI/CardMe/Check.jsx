@@ -1,15 +1,30 @@
+import { useState } from "react";
 import styles from "./style.module.css";
 
-function Check({ name, color, isChecked, setChecked }) {
+function Check({ id, label, checked, color, handleChecked }) {
+  const defaultChecked = checked ? checked : false;
+  const [isChecked, setIsChecked] = useState(defaultChecked);
+
+  function handle(e) {
+    setIsChecked((prev) => !prev);
+    handleChecked(e.target.id, !isChecked);
+  }
+
   return (
-    <div className={styles.check}>
+    <div className={styles.checkboxWrapper}>
+      <label>
         <input
-          className={styles.checkbox}
+          id={id}
+          style={
+            isChecked ? { backgroundColor: color, position: "relative" } : {}
+          }
+          className={styles.checked}
           type="checkbox"
-          defaultChecked={isChecked}
-          onChange={(e) => setChecked(e.target.checked)}
+          checked={defaultChecked}
+          onChange={(e) => handle(e)}
         />
-      <label>{name}</label>
+        <span>{label}</span>
+      </label>
     </div>
   );
 }

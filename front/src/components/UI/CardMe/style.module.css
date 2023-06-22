@@ -61,27 +61,81 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-evenly;
+  height: 5px;
   animation: fade 0.5s;
 }
 
 .dot {
-  height: 4px;
-  width: 4px;
+  height: 5px;
+  width: 5px;
   background-color: #bbb;
   border-radius: 49%;
 }
 
 .checkList {
-  margin: 10px;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+.cardCheckbox {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 
+}
+
+.checkboxWrapper {
   display: flex;
-  flex-direction: column;
+  padding: 15px;
+  flex-direction: row;
   flex-wrap: nowrap;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.checkboxWrapper input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1em;
+  height: 1em;
+  border-radius: 12px;
+  margin-right: 20px;
+  outline: 0.07em solid #d7d7d7;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-bottom: -1px;
+}
+
+.checkbox-wrapper input[type="checkbox"]:disabled {
+  border-color: #c0c0c0;
+  background-color: #c0c0c0;
+}
+
+.checkbox-wrapper input[type="checkbox"]:disabled + span {
+  color: #c0c0c0;
+}
+
+.checkbox-wrapper input[type="checkbox"]:focus {
+  box-shadow: 0 0 20px #007a7e;
+}
+
+input.checked::before {
+  content: "";
+  font-size: 1.5em;
+  color: #fff;
+  position: absolute;
+  right: 1px;
+  top: -5px;
 }
 
 .checkList h1 {
+  font-size: 14px;
+  padding-left: 5px;
   color: #9b9b9b;
-  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
 }
 
 .check {
@@ -91,6 +145,7 @@
 label {
   padding-left: 10px;
   color: rgb(97, 97, 97);
+  width: 100%;
 }
 
 
