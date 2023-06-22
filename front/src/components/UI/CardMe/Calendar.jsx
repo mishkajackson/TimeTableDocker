@@ -15,17 +15,21 @@ function Calendar({ datesList, today }) {
   const [listOfTimeline, setListOfTimeline] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [checked, setChecked] = useState([3, 4, 5]);
+  const [countCab3, setCountCab3] = useState()
+  const [countCab4, setCountCab4] = useState();
+  const [countCab5, setCountCab5] = useState();
+
   const user = JSON.parse(localStorage.getItem("user"));
 
   function handleChecked(id, isChecked) {
     if (isChecked) {
       setChecked([...checked, Number(id)]);
-    }else {
+    } else {
       setChecked(checked.filter((item) => item !== Number(id)));
     }
   }
 
-  useEffect(() => {
+  function getTimelineOfFullMonth() {
     const startOfMonth = moment(today)
       .startOf("month")
       .startOf("week")
@@ -44,6 +48,33 @@ function Calendar({ datesList, today }) {
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
+  }
+
+  function countTimelineOfMonth() {
+    const startOfMonth = moment(today)
+      .startOf("month")
+      .format("YYYY-MM-DD");
+    const endOfMonth = moment(today)
+      .endOf("month")
+      .format("YYYY-MM-DD");
+
+    axios
+      .get(
+        `timeline/user/${user.id}/filter?startDate=${startOfMonth}&endDate=${endOfMonth}`
+      )
+      .then((res) => {
+        let arr = []
+        arr = res.data;
+        setCountCab3(arr.filter((item) => item.cabId === 3).length);
+        setCountCab4(arr.filter((item) => item.cabId === 4).length);
+        setCountCab5(arr.filter((item) => item.cabId === 5).length);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  useEffect(() => {
+    getTimelineOfFullMonth();
+    countTimelineOfMonth();
   }, [today, user.id]);
 
   return (
@@ -105,6 +136,7 @@ function Calendar({ datesList, today }) {
                   color={"#ff5b5b"}
                   checked={true}
                   handleChecked={handleChecked}
+                  count={countCab5}
                 />
                 <Check
                   id={3}
@@ -112,6 +144,7 @@ function Calendar({ datesList, today }) {
                   color={"#6f7fff"}
                   checked={true}
                   handleChecked={handleChecked}
+                  count={countCab3}
                 />
                 <Check
                   id={4}
@@ -119,6 +152,7 @@ function Calendar({ datesList, today }) {
                   color={"#00a600"}
                   checked={true}
                   handleChecked={handleChecked}
+                  count={countCab4}
                 />
               </div>
             </div>
