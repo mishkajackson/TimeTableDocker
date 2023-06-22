@@ -146,11 +146,13 @@ label {
   width: 100%;
   color: rgb(97, 97, 97);
   font-size: 16px;
+  animation: fade 0.5s;
 }
 
 .count {
   color: #c9c9c9;
   font-size: 14px;
+  animation: fade 0.5s;
 }
 
 

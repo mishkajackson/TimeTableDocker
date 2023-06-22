@@ -114,21 +114,33 @@ function Schedule() {
         <div className={styles.nav}>
           <p
             id="0"
-            style={tab === "0" ? { borderBottom: "2px solid #bdbdbd" } : {}}
+            style={
+              tab === "0"
+                ? { borderBottom: "2px solid #6786ff", fontWeight: 500 }
+                : {}
+            }
             onClick={(e) => changeTab(e)}
           >
             Платные
           </p>
           <p
             id="1"
-            style={tab === "1" ? { borderBottom: "2px solid #bdbdbd" } : {}}
+            style={
+              tab === "1"
+                ? { borderBottom: "2px solid #6786ff", fontWeight: 500 }
+                : {}
+            }
             onClick={(e) => changeTab(e)}
           >
             ЭЭГ
           </p>
           <p
             id="2"
-            style={tab === "2" ? { borderBottom: "2px solid #bdbdbd" } : {}}
+            style={
+              tab === "2"
+                ? { borderBottom: "2px solid #6786ff", fontWeight: 500 }
+                : {}
+            }
             onClick={(e) => changeTab(e)}
           >
             Дежурство

@@ -11,7 +11,7 @@
   text-align: center;
   background-color: #FFFFFF;
   color: #4c4c4c;
-  height: 70px;
+  height: 117px;
   text-transform: capitalize;
   display: flex;
   flex-direction: row;
@@ -30,7 +30,7 @@
 }
 
 .content {
-  margin: 80px 10px 10px 10px;
+  margin: 65px 10px 14px 10px;
 }
 
 .nav {
@@ -40,7 +40,7 @@
   justify-content: space-around;
   align-items: center;
   border-radius: 8px;
-
+  z-index: 999;
 }
 
 .nav p {
@@ -50,7 +50,8 @@
     text-align: center;
     transition: border 0.3s;
     margin: 0px;
-    width: 80px;
+    width: 100%;
+    z-index: 999;
 }
 
 .nav p:hover {
