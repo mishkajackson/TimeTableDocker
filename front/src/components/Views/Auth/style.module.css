@@ -75,3 +75,11 @@
     color: #FFFFFF;
     margin-top: 35px;
 }
+
+input {
+    width: 94%;
+    border: 1px solid #b7b7b7;
+    border-radius: 4px;
+    outline: none;
+    padding: 10px;
+}

@@ -97,110 +97,112 @@ function Schedule() {
 
   return (
     <div>
-      <div className={styles.title}>
-        <FontAwesomeIcon
-          onClick={prevMonth}
-          className={styles.icon}
-          icon={faChevronLeft}
-        />
-        <h1>{today.toLocaleDateString("ru-RU", { month: "long" })}</h1>
-        <FontAwesomeIcon
-          onClick={nextMonth}
-          className={styles.icon}
-          icon={faChevronRight}
-        />
-      </div>
-      <div className={styles.content}>
-        <div className={styles.nav}>
-          <p
-            id="0"
-            style={
-              tab === "0"
-                ? {
-                    borderBottom: "2px solid #3674f9",
-                    fontWeight: 500,
-                    color: "#3674f9",
-                  }
-                : {}
-            }
-            onClick={(e) => changeTab(e)}
-          >
-            Платные
-          </p>
-          <p
-            id="1"
-            style={
-              tab === "1"
-                ? {
-                    borderBottom: "2px solid #3674f9",
-                    fontWeight: 500,
-                    color: "#3674f9",
-                  }
-                : {}
-            }
-            onClick={(e) => changeTab(e)}
-          >
-            ЭЭГ
-          </p>
-          <p
-            id="2"
-            style={
-              tab === "2"
-                ? {
-                    borderBottom: "2px solid #3674f9",
-                    fontWeight: 500,
-                    color: "#3674f9",
-                  }
-                : {}
-            }
-            onClick={(e) => changeTab(e)}
-          >
-            Дежурство
-          </p>
-        </div>
-      </div>
       {!isLoading ? (
         <div>
-          <Swiper
-            cssMode={true}
-            speed={100}
-            onSlideChange={(swiper) => setTab(String(swiper.snapIndex))}
-            onBeforeInit={(swipper) => setSwipe(swipper)}
-          >
-            <SwiperSlide>
-              <Table
-                datesList={datesList}
-                users={users}
-                cab={4}
-                today={today}
-                listOfTimeline={listOfTimeline}
-                isLoading={isLoading}
-                callErrorNotification={callErrorNotification}
-              ></Table>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Table
-                datesList={datesList}
-                users={users}
-                cab={3}
-                today={today}
-                listOfTimeline={listOfTimeline}
-                isLoading={isLoading}
-                callErrorNotification={callErrorNotification}
-              ></Table>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Table
-                datesList={datesList}
-                users={users}
-                cab={5}
-                today={today}
-                listOfTimeline={listOfTimeline}
-                isLoading={isLoading}
-                callErrorNotification={callErrorNotification}
-              ></Table>
-            </SwiperSlide>
-          </Swiper>
+          <div className={styles.title}>
+            <FontAwesomeIcon
+              onClick={prevMonth}
+              className={styles.icon}
+              icon={faChevronLeft}
+            />
+            <h1>{today.toLocaleDateString("ru-RU", { month: "long" })}</h1>
+            <FontAwesomeIcon
+              onClick={nextMonth}
+              className={styles.icon}
+              icon={faChevronRight}
+            />
+          </div>
+          <div className={styles.content}>
+            <div className={styles.nav}>
+              <p
+                id="0"
+                style={
+                  tab === "0"
+                    ? {
+                        borderBottom: "2px solid #3674f9",
+                        fontWeight: 500,
+                        color: "#3674f9",
+                      }
+                    : {}
+                }
+                onClick={(e) => changeTab(e)}
+              >
+                Платные
+              </p>
+              <p
+                id="1"
+                style={
+                  tab === "1"
+                    ? {
+                        borderBottom: "2px solid #3674f9",
+                        fontWeight: 500,
+                        color: "#3674f9",
+                      }
+                    : {}
+                }
+                onClick={(e) => changeTab(e)}
+              >
+                ЭЭГ
+              </p>
+              <p
+                id="2"
+                style={
+                  tab === "2"
+                    ? {
+                        borderBottom: "2px solid #3674f9",
+                        fontWeight: 500,
+                        color: "#3674f9",
+                      }
+                    : {}
+                }
+                onClick={(e) => changeTab(e)}
+              >
+                Дежурство
+              </p>
+            </div>
+          </div>
+          <div>
+            <Swiper
+              cssMode={true}
+              speed={100}
+              onSlideChange={(swiper) => setTab(String(swiper.snapIndex))}
+              onBeforeInit={(swipper) => setSwipe(swipper)}
+            >
+              <SwiperSlide>
+                <Table
+                  datesList={datesList}
+                  users={users}
+                  cab={4}
+                  today={today}
+                  listOfTimeline={listOfTimeline}
+                  isLoading={isLoading}
+                  callErrorNotification={callErrorNotification}
+                ></Table>
+              </SwiperSlide>
+              <SwiperSlide>
+                <Table
+                  datesList={datesList}
+                  users={users}
+                  cab={3}
+                  today={today}
+                  listOfTimeline={listOfTimeline}
+                  isLoading={isLoading}
+                  callErrorNotification={callErrorNotification}
+                ></Table>
+              </SwiperSlide>
+              <SwiperSlide>
+                <Table
+                  datesList={datesList}
+                  users={users}
+                  cab={5}
+                  today={today}
+                  listOfTimeline={listOfTimeline}
+                  isLoading={isLoading}
+                  callErrorNotification={callErrorNotification}
+                ></Table>
+              </SwiperSlide>
+            </Swiper>
+          </div>
         </div>
       ) : (
         <Loader></Loader>

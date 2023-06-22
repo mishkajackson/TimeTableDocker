@@ -1,7 +1,7 @@
 
 import { Outlet, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarCheck, faStethoscope, faCalendarDays, faMoneyCheckDollar, faPills, faBrain, faUser  } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays, faUser, faListCheck, faTableColumns, faGear } from '@fortawesome/free-solid-svg-icons'
 import '../App.css';
 
 
@@ -9,10 +9,10 @@ import '../App.css';
 
 function Footer() {
     const navButtons = [
-        { name: 'Сегодня', icon: faCalendarCheck, active: true, link: '/' },
-        { name: 'Смены', icon: faStethoscope, active: false, link: '/Me' },
-        { name: 'Графики', icon: faCalendarDays, active: false, link: '/Schedule' },
-        { name: 'Профиль', icon: faUser, active: false, link: '/User' }
+        { name: 'На неделе', icon: faListCheck, active: true, link: '/' },
+        { name: 'Календарь', icon: faCalendarDays, active: false, link: '/Me' },
+        { name: 'Графики', icon: faTableColumns, active: false, link: '/Schedule' },
+        { name: 'Настройки', icon: faGear, active: false, link: '/User' }
         
     ]
     return (

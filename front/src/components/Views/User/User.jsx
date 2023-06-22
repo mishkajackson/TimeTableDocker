@@ -27,25 +27,33 @@ function User() {
 
 
     return (
-        <div>
-            <div className={styles.title}>
-                <FontAwesomeIcon className={styles.avatar} icon={faUser}></FontAwesomeIcon>
-                <h1 className={styles.greeting}>{user.name}</h1>
-                <p className={styles.role}>{user.isAdmin ? 'Администратор' : 'Пользователь'}</p>
-            </div>
-            <div>
-                <div>
-                    <CardUser addUser={addUser}></CardUser>
-                </div>
-                <div>
-                    
-                    <button className={styles.btn} onClick={logOut}>Выход</button>
-                </div>
-                
-                
-            </div>
+      <div>
+        <div className={styles.title}>
+          <input type="file" name="file" id="file" class={styles.inputfile} />
+          <label for="file">
+            <FontAwesomeIcon
+              className={styles.avatar}
+              icon={faUser}
+            ></FontAwesomeIcon>
+          </label>
+
+          <h1 className={styles.greeting}>{user.name}</h1>
+          <p className={styles.role}>
+            {user.isAdmin ? "Администратор" : "Пользователь"}
+          </p>
         </div>
-    )
+        <div>
+          <div>
+            <CardUser addUser={addUser}></CardUser>
+          </div>
+          <div>
+            <button className={styles.btn} onClick={logOut}>
+              Выход
+            </button>
+          </div>
+        </div>
+      </div>
+    );
 }
 
 export default User

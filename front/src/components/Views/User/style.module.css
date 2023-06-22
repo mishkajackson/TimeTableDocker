@@ -17,16 +17,27 @@
 
 }
 
-
-
-
-
 .avatar {
   font-size: 20px;
-  background: #dddddd;
-  padding: 20px;
+  background: #c0c0c0;
+  padding: 15px 15px;
+  width: 20px;
   border-radius: 50%;
   color: #FFFFFF;
+  transition: all 0.3s
+}
+
+.avatar:hover {
+  opacity: 0.5
+}
+
+.inputfile {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }
 
 .greeting {

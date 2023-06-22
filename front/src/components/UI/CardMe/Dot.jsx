@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import styles from "./style.module.css";
 import moment from "moment";
 

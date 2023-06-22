@@ -17,7 +17,7 @@
 }
 
 .card h1 {
-  font-size: 15px;
+  font-size: 14px;
   padding-bottom: 8px;
   color: #9b9b9b;
   text-transform: uppercase;
@@ -66,4 +66,14 @@
   background: #FFFFFF;
   border-radius: 8px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.02);
+}
+.btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: #3674f9;
+  color: #FFFFFF;
+  margin-top: 35px;
+  width: 100%;
 }
