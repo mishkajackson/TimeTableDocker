@@ -1,8 +1,11 @@
 @keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {opacity: 0;visibility: hidden;}
+  to {opacity: 1;visibility: visible;}
 }
-
+@keyframes move {
+  from {top: -10px;}
+  to {top: 0;}
+}
 
 .icon {
   color: rgb(119, 119, 119);
@@ -11,10 +14,12 @@
 }
 
 .main {
+  position: relative;
   width: 100%;
   padding: 0px 0px;
   animation: fade 0.5s;
-  z-index: -1;
+  z-index: 0;
+  animation: move 0.8s;
 }
 
 .calendar {
@@ -36,7 +41,7 @@
   padding: 6px;
   font-size: 14px;
   transition: all 0.2s;
-    
+  animation: fade 0.5s;
 }
 
 
@@ -62,7 +67,6 @@
   align-items: center;
   justify-content: space-evenly;
   height: 5px;
-  animation: fade 0.5s;
 }
 
 .dot {
@@ -70,6 +74,7 @@
   width: 5px;
   background-color: #bbb;
   border-radius: 49%;
+  animation: fade 0.5s;
 }
 
 .checkList {
@@ -80,7 +85,6 @@
   width: 100%;
   background: #FFFFFF;
   border-radius: 8px;
-  box-shadow: 
 }
 
 .checkboxWrapper {
@@ -126,6 +130,8 @@ input.checked::before {
   position: absolute;
   right: 1px;
   top: -5px;
+  transition: all 0.5s;
+  
 }
 
 .checkList h1 {
@@ -135,6 +141,7 @@ input.checked::before {
   text-transform: uppercase;
   letter-spacing: 1px;
   width: 100%;
+  animation: fade 0.5s;
 }
 
 .check {
@@ -147,12 +154,14 @@ label {
   color: rgb(97, 97, 97);
   font-size: 16px;
   animation: fade 0.5s;
+  transition: all 0.5s;
 }
 
 .count {
   color: #c9c9c9;
   font-size: 14px;
   animation: fade 0.5s;
+  transition: all 0.5s;
 }
 
 

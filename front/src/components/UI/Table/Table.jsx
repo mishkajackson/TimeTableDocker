@@ -40,13 +40,10 @@ function Table({ datesList, users, cab, isLoading, listOfTimeline, callErrorNoti
         <div className={styles.content}>
           {datesList.map((date, index) => (
             <div key={index} className={styles.cards}>
+              <div className={styles.block}>
+                <h1> {moment(date).format("dd DD")}</h1>
+              </div>
               <div className={styles.card}>
-                <div className={styles.blocks}>
-                  <div className={styles.block} style={{borderRight: '1px solid #e2e2e2'}}>
-                    <p> {moment(date).format("dd")}</p>
-                    <p>{moment(date).format("DD")}</p>
-                  </div>
-                  <div className={styles.block}>
                     <Card
                       items={listOfTimeline}
                       users={users}
@@ -69,14 +66,11 @@ function Table({ datesList, users, cab, isLoading, listOfTimeline, callErrorNoti
                     ></Card>
                   </div>
                 </div>
-              </div>
-            </div>
           ))}
         </div>
       ) : (
         <Loader></Loader>
       )}
-      
     </div>
   );
 }

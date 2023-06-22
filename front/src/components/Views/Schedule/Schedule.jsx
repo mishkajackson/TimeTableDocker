@@ -116,7 +116,11 @@ function Schedule() {
             id="0"
             style={
               tab === "0"
-                ? { borderBottom: "2px solid #6786ff", fontWeight: 500 }
+                ? {
+                    borderBottom: "2px solid #3674f9",
+                    fontWeight: 500,
+                    color: "#3674f9",
+                  }
                 : {}
             }
             onClick={(e) => changeTab(e)}
@@ -127,7 +131,11 @@ function Schedule() {
             id="1"
             style={
               tab === "1"
-                ? { borderBottom: "2px solid #6786ff", fontWeight: 500 }
+                ? {
+                    borderBottom: "2px solid #3674f9",
+                    fontWeight: 500,
+                    color: "#3674f9",
+                  }
                 : {}
             }
             onClick={(e) => changeTab(e)}
@@ -138,7 +146,11 @@ function Schedule() {
             id="2"
             style={
               tab === "2"
-                ? { borderBottom: "2px solid #6786ff", fontWeight: 500 }
+                ? {
+                    borderBottom: "2px solid #3674f9",
+                    fontWeight: 500,
+                    color: "#3674f9",
+                  }
                 : {}
             }
             onClick={(e) => changeTab(e)}
@@ -150,8 +162,8 @@ function Schedule() {
       {!isLoading ? (
         <div>
           <Swiper
-            spaceBetween={0}
-            slidesPerView={1}
+            cssMode={true}
+            speed={100}
             onSlideChange={(swiper) => setTab(String(swiper.snapIndex))}
             onBeforeInit={(swipper) => setSwipe(swipper)}
           >
