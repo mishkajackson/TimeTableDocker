@@ -1,0 +1,44 @@
+.btnBack {
+    border: none;
+    background: none;
+    color: #3674f9;
+    margin: 5px;
+}
+
+.btnBack span {
+    padding-left: 5px;
+}
+
+input.checked::before {
+  content: "";
+  font-size: 1.5em;
+  color: #fff;
+  position: absolute;
+  right: 1px;
+  top: -5px;
+  transition: all 0.5s;
+  
+}
+
+.checkList h1 {
+  font-size: 14px;
+  padding-left: 5px;
+  color: #9b9b9b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  animation: fade 0.5s;
+}
+
+.check {
+  padding: 5px;
+}
+
+label {
+  padding-left: 10px;
+  width: 100%;
+  color: rgb(97, 97, 97);
+  font-size: 16px;
+  animation: fade 0.5s;
+  transition: all 0.5s;
+}

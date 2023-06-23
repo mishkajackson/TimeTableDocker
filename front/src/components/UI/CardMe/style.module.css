@@ -100,14 +100,14 @@
 .checkboxWrapper input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
-  width: 1em;
-  height: 1em;
+  width: 0.7em;
+  height: 0.7em;
   border-radius: 12px;
   margin-right: 20px;
   outline: 0.07em solid #d7d7d7;
   border-radius: 50%;
   cursor: pointer;
-  margin-bottom: -1px;
+  margin-bottom: 1px;
 }
 
 .checkbox-wrapper input[type="checkbox"]:disabled {

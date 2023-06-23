@@ -1,13 +1,10 @@
-import { useState } from "react";
 
 import "../../../App.css";
 import styles from "./style.module.css";
 import { faCircleHalfStroke, faKey, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Card({ addUser }) {
-  const [user, setUser] = useState("");
-
+function Card({ handleClick }) {
   return (
     <>
       <div className={styles.cards}>
@@ -18,39 +15,32 @@ function Card({ addUser }) {
               <div className={styles.block}>
                 <FontAwesomeIcon
                   className={styles.icon}
-                  icon={faKey}
+                  icon={faUsers}
                 ></FontAwesomeIcon>
-                <p>Сменить пароль</p>
+                <p id={"Users"} onClick={(e) => handleClick(e)}>
+                  Пользователи
+                </p>
               </div>
               <div className={styles.block}>
                 <FontAwesomeIcon
                   className={styles.icon}
-                  icon={faUsers}
+                  icon={faKey}
                 ></FontAwesomeIcon>
-                <p>Пользователи</p>
+                <p id={"Password"} onClick={(e) => handleClick(e)}>
+                  Сменить пароль
+                </p>
               </div>
               <div className={styles.block}>
                 <FontAwesomeIcon
                   className={styles.icon}
                   icon={faCircleHalfStroke}
                 ></FontAwesomeIcon>
-                <p>Оформление</p>
+                <p id={"Theme"} onClick={(e) => handleClick(e)}>
+                  Оформление
+                </p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div className={styles.cards}>
-        <div className={styles.card}>
-          <input
-            placeholder="Введите имя"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
-            type="text"
-          />
-          <button className={styles.btn} onClick={() => addUser(user)}>
-            Добавить
-          </button>
         </div>
       </div>
     </>
