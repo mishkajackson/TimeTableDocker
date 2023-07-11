@@ -95,6 +95,38 @@ function Today() {
               {currentWeekDates.map((date) => (
                 <div key={date.id}>
                   <SwiperSlide>
+                    <Card title="Дежурство">
+                      {itemsOfCab5.filter(
+                        (item) =>
+                          moment(item.date).format("DD.MM.YYYY") === date.date
+                      ).length !== 0 ? (
+                        <div>
+                          {itemsOfCab5
+                            .filter(
+                              (item) =>
+                                moment(item.date).format("DD.MM.YYYY") ===
+                                date.date
+                            )
+                            .map((item) => (
+                              <div key={item.id}>
+                                <Content
+                                  icon={
+                                    item.timeOfDay === "morning"
+                                      ? faSun
+                                      : faMoon
+                                  }
+                                  text={item.user.name}
+                                />
+                              </div>
+                            ))}
+                        </div>
+                      ) : (
+                        <div>
+                          <Content icon={faSun} text={"..."} />
+                          <Content icon={faMoon} text={"..."} />
+                        </div>
+                      )}
+                    </Card>
                     <Card title="ЭЭГ">
                       {itemsOfCab3.filter(
                         (item) =>
@@ -135,39 +167,6 @@ function Today() {
                       ).length !== 0 ? (
                         <div>
                           {itemsOfCab4
-                            .filter(
-                              (item) =>
-                                moment(item.date).format("DD.MM.YYYY") ===
-                                date.date
-                            )
-                            .map((item) => (
-                              <div key={item.id}>
-                                <Content
-                                  icon={
-                                    item.timeOfDay === "morning"
-                                      ? faSun
-                                      : faMoon
-                                  }
-                                  text={item.user.name}
-                                />
-                              </div>
-                            ))}
-                        </div>
-                      ) : (
-                        <div>
-                          <Content icon={faSun} text={"..."} />
-                          <Content icon={faMoon} text={"..."} />
-                        </div>
-                      )}
-                    </Card>
-
-                    <Card title="Дежурство">
-                      {itemsOfCab5.filter(
-                        (item) =>
-                          moment(item.date).format("DD.MM.YYYY") === date.date
-                      ).length !== 0 ? (
-                        <div>
-                          {itemsOfCab5
                             .filter(
                               (item) =>
                                 moment(item.date).format("DD.MM.YYYY") ===
