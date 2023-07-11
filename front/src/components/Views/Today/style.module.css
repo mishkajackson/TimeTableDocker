@@ -16,7 +16,8 @@
 }
 
 .content {
-  margin-top: 140px;
+  position: relative;
+  top: 120px;
 }
 
 .cards {

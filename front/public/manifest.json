@@ -21,7 +21,7 @@
   "start_url": "/?standalone=true",
   "display": "standalone",
   "theme_color": "#FFFFFF",
-  "background_color": "#FFFFFF",
+  "background_color": "#ccc",
   "permissions": [
     "unlimitedStorage",
     "fullscreen"
